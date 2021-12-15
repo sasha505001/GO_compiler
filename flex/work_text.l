@@ -33,7 +33,7 @@ void safe_strcat(char** str1, const char* str2)
 }
 
 
-
+// Удаление всех символов из строки совпадающих с данным
 void delete_char_from_str(char str[], char sim) {
     int i, j;
     for (i = j = 0; str[i] != '\0'; i++)
@@ -42,6 +42,7 @@ void delete_char_from_str(char str[], char sim) {
     str[j] = '\0';
 }
 
+// Строку в двоичное число
 int str_to_binary_num(char* str, int len) {
     int num = 0;
     int negative = str[0] == '-';
@@ -87,11 +88,44 @@ ID [_a-zA-Z][_0-9a-zA-Z]*
     int tmp;
 %}
 
-break {printf("Keyword: %s\n", yytext);}
+int {
+	printf("int\n");
+	return INT_KEYWORD;
+}
+
+bool {
+	printf("bool\n");
+	return BOOL_KEYWORD;
+}
+
+string {
+	printf("string\n");
+	return STRING_KEYWORD;
+}
+
+true {
+	printf("true\n");
+	return TRUE_KEYWORD;
+}
+
+false {
+	printf("false\n");
+	return FALSE_KEYWORD;
+}
+
+
+
+break {
+    printf("Keyword: %s\n", yytext);
+    return BREAK_KEYWORD;
+}
 
 default {printf("Keyword: %s\n", yytext);}
 
-func {printf("Keyword: %s\n", yytext);}
+func {
+    printf("Keyword: %s\n", yytext);
+    return FUNC_KEYWORD;
+}
 
 case {printf("Keyword: %s\n", yytext);}
 
@@ -101,105 +135,132 @@ map {printf("Keyword: %s\n", yytext);}
 
 struct {printf("Keyword: %s\n", yytext);}
 
-else {printf("Keyword: %s\n", yytext);}
+else {
+    printf("Keyword: %s\n", yytext);
+    return ELSE_KEYWORD;
+}
 
 goto {printf("Keyword: %s\n", yytext);}
 
-package {printf("Keyword: %s\n", yytext);}
+package {
+    printf("Keyword: %s\n", yytext);
+    return PACKAGE_KEYWORD;
+}
 
 switch {printf("Keyword: %s\n", yytext);}
 
-const {printf("Keyword: %s\n", yytext);}
+const {
+    printf("Keyword: %s\n", yytext);
+    return CONST_KEYWORD;
+}
 
 fallthrough {printf("Keyword: %s\n", yytext);}
 
-if {printf("Keyword: %s\n", yytext);}
+if {
+    printf("Keyword: %s\n", yytext);
+    return IF_KEYWORD;
+}
 
 range {printf("Keyword: %s\n", yytext);}
 
 type {printf("Keyword: %s\n", yytext);}
 
-continue {printf("Keyword: %s\n", yytext);}
+continue {
+    printf("Keyword: %s\n", yytext);
+    return CONTINUE_KEYWORD;
+}
 
-for {printf("Keyword: %s\n", yytext);}
+for {
+    printf("Keyword: %s\n", yytext);
+    return FOR_KEYWORD;
+}
 
-import {printf("Keyword: %s\n", yytext);}
+import {
+    printf("Keyword: %s\n", yytext);
+    return IMPORT_KEYWORD;
+}
 
-return {printf("Keyword: %s\n", yytext);}
+return {
+    printf("Keyword: %s\n", yytext);
+    return RETURN_KEYWORD;
+}
 
-var {printf("Keyword: %s\n", yytext);}
+var {
+    printf("Keyword: %s\n", yytext);
+    return VAR_KEYWORD;
+}
 
-"+" {printf( "Operator: %s\n", yytext );}
+"+" {printf( "Operator: %s\n", yytext ); return '+';}
 
 "&" {printf( "Operator: %s\n", yytext );}
 
-"+=" {printf( "Operator: %s\n", yytext );}
+"+=" {printf( "Operator: %s\n", yytext ); return PLUS_ASSIGN;}
 
 "&=" {printf( "Operator: %s\n", yytext );}
 
-"&&" {printf( "Operator: %s\n", yytext );}
+"&&" {printf( "Operator: %s\n", yytext ); return AND;}
 
-"==" {printf( "Operator: %s\n", yytext );}
+"==" {printf( "Operator: %s\n", yytext ); return EQUAL;}
 
-"!=" {printf( "Operator: %s\n", yytext );}
+"!=" {printf( "Operator: %s\n", yytext ); return NOT_EQUAL;}
 
-"(" {printf( "Operator: %s\n", yytext );}
+"(" {printf( "Operator: %s\n", yytext ); return '(';}
 
-")" {printf( "Operator: %s\n", yytext );}
+")" {printf( "Operator: %s\n", yytext ); return ')';}
 
-"-" {printf( "Operator: %s\n", yytext );}
+"-" {printf( "Operator: %s\n", yytext ); return '-';}
 
 "|" {printf( "Operator: %s\n", yytext );}
 
-"-=" {printf( "Operator: %s\n", yytext );}
+"-=" {printf( "Operator: %s\n", yytext ); return MINUS_ASSIGN;}
 
 "|=" {printf( "Operator: %s\n", yytext );}
 
-"||" {printf( "Operator: %s\n", yytext );}
+"||" {printf( "Operator: %s\n", yytext ); return OR;}
 
-"<" {printf( "Operator: %s\n", yytext );}
+"<" {printf( "Operator: %s\n", yytext ); return '<';}
 
-"<=" {printf( "Operator: %s\n", yytext );}
+"<=" {printf( "Operator: %s\n", yytext ); return LESS_OR_EQUAL;}
 
-"[" {printf( "Operator: %s\n", yytext );}
+"[" {printf( "Operator: %s\n", yytext ); return '[';}
 
-"]" {printf( "Operator: %s\n", yytext );}
+"]" {printf( "Operator: %s\n", yytext ); return ']';}
 
-"*" {printf( "Operator: %s\n", yytext );}
+"*" {printf( "Operator: %s\n", yytext ); return '*';}
 
 "^" {printf( "Operator: %s\n", yytext );}
 
-"*=" {printf( "Operator: %s\n", yytext );}
+"*=" {printf( "Operator: %s\n", yytext ); return MULTIPLY_ASSIGN;}
 
 "^=" {printf( "Operator: %s\n", yytext );}
 
-">" {printf( "Operator: %s\n", yytext );}
+">" {printf( "Operator: %s\n", yytext ); return '>';}
 
-">=" {printf( "Operator: %s\n", yytext );}
+">=" {printf( "Operator: %s\n", yytext ); return GREATER_OR_EQUAL;}
 
-"{" {printf( "Operator: %s\n", yytext );}
+"{" {printf( "Operator: %s\n", yytext ); return '{';}
 
-"}" {printf( "Operator: %s\n", yytext );}
+"}" {printf( "Operator: %s\n", yytext ); return '}';}
 
-"/" {printf( "Operator: %s\n", yytext );}
+"/" {printf( "Operator: %s\n", yytext ); return '/';}
 
 "<<" {printf( "Operator: %s\n", yytext );}
 
-"/=" {printf( "Operator: %s\n", yytext );}
+"/=" {printf( "Operator: %s\n", yytext ); return DIVISION_ASSIGN;}
 
 "<<=" {printf( "Operator: %s\n", yytext );}
 
-"++" {printf( "Operator: %s\n", yytext );}
+"++" {printf( "Operator: %s\n", yytext ); return INCREMENT;}
 
-"=" {printf( "Operator: %s\n", yytext );}
+"=" {printf( "Operator: %s\n", yytext ); return '=';}
 
-":=" {printf( "Operator: %s\n", yytext );}
+":=" {printf( "Operator: %s\n", yytext ); return SHORT_EQUALS;}
 
-"," {printf( "Operator: %s\n", yytext );}
+"," {printf( "Operator: %s\n", yytext ); return ',';}
 
-";" {printf( "Separator: %s\n", yytext );}
+";" {printf( "Separator: %s\n", yytext ); return ';';}
 
-"%" {printf( "Operator: %s\n", yytext );}
+"%" {printf( "Operator: %s\n", yytext ); return '%';}
 
 ">>" {printf( "Operator: %s\n", yytext );}
 
@@ -207,15 +268,15 @@ var {printf("Keyword: %s\n", yytext);}
 
 ">>=" {printf( "Operator: %s\n", yytext );}
 
-"--" {printf( "Operator: %s\n", yytext );}
+"--" {printf( "Operator: %s\n", yytext ); return DECREMENT;}
 
-"!" {printf( "Operator: %s\n", yytext );}
+"!" {printf( "Operator: %s\n", yytext ); return '!';}
 
 "..." {printf( "Operator: %s\n", yytext );}
 
-"." {printf( "Operator: %s\n", yytext );}
+"." {printf( "Operator: %s\n", yytext ); return '.';}
 
-":" {printf( "Operator: %s\n", yytext );}
+":" {printf( "Operator: %s\n", yytext ); return ':';}
 
 "&^" {printf( "Operator: %s\n", yytext );}
 
@@ -223,7 +284,7 @@ var {printf("Keyword: %s\n", yytext);}
 
 _ {printf( "Empty ID: %s\n", yytext );} 
 
-\n {printf("Separator: \\n%s", yytext );}
+\n {return '\n';}
 
 [ \t]* {}
 
@@ -234,7 +295,10 @@ _ {printf( "Empty ID: %s\n", yytext );}
     text = (char*)malloc((yyleng + 1) * sizeof(char));
     strcpy(text, yytext);
     printf("Identifier: %s\n", text);
+    yylval.Id = (char*)malloc(strlen(yytext) + 1);
+	strcpy(yylval.Id, text);
     free(text);
+    return ID;
 }
 
 {DECIMAL_LIT} {
@@ -243,7 +307,9 @@ _ {printf( "Empty ID: %s\n", yytext );}
     strcpy(text, yytext);
     delete_char_from_str(text, '_');
     printf("Demacial const: %d\n", atoi(text));
+    yylval.Int_val = atoi(text);
     free(text);
+    return INT;
 }
 
 {BINARY_LIT} {
@@ -251,12 +317,15 @@ _ {printf( "Empty ID: %s\n", yytext );}
     text =(char*)malloc((yyleng + 1) * sizeof(char));
     strcpy(text, yytext);
     delete_char_from_str(text, '_');
-    printf("The binary const: %d\n", str_to_binary_num(text, yyleng));  
+    printf("The binary const: %d\n", str_to_binary_num(text, yyleng)); 
+    yylval.Int_val = str_to_binary_num(text, yyleng);
     free(text);
+    return INT;
 }
 
 {OCTAL_LIT} {
     text = '\0';
+    tmp = 0;
     text =(char*)malloc((yyleng + 1) * sizeof(char));
     strcpy(text, yytext);
     delete_char_from_str(text, '_');
@@ -264,17 +333,22 @@ _ {printf( "Empty ID: %s\n", yytext );}
 	delete_char_from_str(text, 'O');
 	sscanf_s(text, "%o", &tmp);
     printf("The octal const: %d\n", tmp);
+    yylval.Int_val = tmp;
     free(text);
+    return INT;
 }
 
 {HEX_LIT} {
     text = '\0';
+    tmp = 0;
     text =(char*)malloc((yyleng + 1) * sizeof(char));
     strcpy(text, yytext);
     delete_char_from_str(text, '_');
     sscanf(text, "%x", &tmp);
     printf("Hexadecimal constant: %x \n", tmp);
+    yylval.Int_val = tmp;
     free(text);
+    return INT;
 }
 
 
@@ -360,14 +434,17 @@ _ {printf( "Empty ID: %s\n", yytext );}
     printf("The rune literal: %s\n",text);
     free(text);
     BEGIN(INITIAL);
+    return STRING;
 }
 
 <INTERPRETED_STRING_LITERALS>[^\"\\\n]+ {safe_strcat(&text, yytext);}
 <INTERPRETED_STRING_LITERALS>\" {
     safe_strcat(&text, "\"");
     printf("The interpreted string literals: %s\n", text);
+    strcpy(yylval.String, text);
     free(text);
     BEGIN(INITIAL);
+    return STRING;
 }
 
 

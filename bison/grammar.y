@@ -84,7 +84,6 @@ extern struct program_struct* root;
 %type<String> one_similicon_or_many_line_break
 %type<String> many_line_break
 %type<String> end_of_stmt
-%type<String> many_end_of_stmt
 
 %type<node_value> expr
 %type<stmt_value> for_stmt
@@ -160,10 +159,6 @@ one_similicon_or_many_line_break: ';' {$$ = ';';}
 end_of_stmt: one_similicon_or_many_line_break{ $$ = $1;}
 | end_of_stmt one_similicon_or_many_line_break {$$ = $1;}
 
-many_end_of_stmt: end_of_stmt {$$ = $1;}
-| /* empty */ { $$ = 0; }
-;
-
 
 
 program: package_v one_similicon_or_many_line_break highest_decl_list { root = create_program($1, $3); }
@@ -188,7 +183,7 @@ import_v: '.' empty_or_many_line_break STRING one_similicon_or_many_line_break {
 | ID STRING one_similicon_or_many_line_break { $$ = create_import_with_alias($1, $2); }
 ;
 
-package_v: PACKAGE_KEYWORD empty_or_many_line_break ID one_similicon_or_many_line_break{ $$ = create_package_decl($3); }
+package_v: PACKAGE_KEYWORD empty_or_many_line_break ID{ $$ = create_package_decl($3); }
 ;
 
 
@@ -202,12 +197,9 @@ complex_data: INT_KEYWORD { $$ = create_complex_data_type(int_t); }
 | FUNC_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break param_list ')' return_v { $$ = create_function_type(create_prototype(0, $5, $7)); }
 | FUNC_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break ')' return_v { $$ = create_function_type(create_prototype(0, 0, $6)); }
 | FUNC_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break param_list ',' empty_or_many_line_break ')' return_v { $$ = create_function_type(create_prototype(0, $5, $9)); }
-| FUNC_KEYWORD many_line_break '(' empty_or_many_line_break param_list ')' { $$ = create_function_type(create_prototype(0, $5, 0)); }
-| FUNC_KEYWORD '(' empty_or_many_line_break param_list ')' { $$ = create_function_type(create_prototype(0, $4, 0)); }
-| FUNC_KEYWORD '(' empty_or_many_line_break ')' { $$ = create_function_type(create_prototype(0, 0, 0)); }
-| FUNC_KEYWORD many_line_break '(' empty_or_many_line_break ')' { $$ = create_function_type(create_prototype(0, 0, 0)); }
-| FUNC_KEYWORD '(' empty_or_many_line_break param_list ',' empty_or_many_line_break ')' { $$ = create_function_type(create_prototype(0, $4, 0)); }
-| FUNC_KEYWORD many_line_break '(' empty_or_many_line_break param_list ',' empty_or_many_line_break ')' { $$ = create_function_type(create_prototype(0, $5, 0)); }
+| FUNC_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break param_list ')' { $$ = create_function_type(create_prototype(0, $5, 0)); }
+| FUNC_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break ')' { $$ = create_function_type(create_prototype(0, 0, 0)); }
+| FUNC_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break param_list ',' empty_or_many_line_break ')' { $$ = create_function_type(create_prototype(0, $5, 0)); }
 ;
 
 expr: l_value { $$ = $1; }
@@ -307,40 +299,40 @@ simple_stmt_not_empty: expr { $$ = create_node_stmt($1); }
 | short_var_decl { $$ = $1; }
 ;
 
-simple_stmt: one_similicon_or_many_line_break { $$ = create_empty_stmt(); }
+simple_stmt: /* empty */ { $$ = create_empty_stmt(); }
 | simple_stmt_not_empty { $$ = $1; }
 ;
 
-return_stmt: RETURN_KEYWORD expr_list many_end_of_stmt { $$ = create_return_stmt($2); }
+return_stmt: RETURN_KEYWORD expr_list end_of_stmt { $$ = create_return_stmt($2); }
 ;
 
-stmt: simple_stmt many_end_of_stmt { $$ = $1; }
-| const_decl many_end_of_stmt{ $$ = $1; }
-| var_decl many_end_of_stmt{ $$ = $1; }
+stmt: simple_stmt_not_empty end_of_stmt { $$ = $1; }
+| const_decl end_of_stmt{ $$ = $1; }
+| var_decl end_of_stmt{ $$ = $1; }
 | return_stmt { $$ = $1; }
 | if_stmt { $$ = $1; }
 | for_stmt { $$ = $1; }
 | body { $$ = $1; }
-| BREAK_KEYWORD many_end_of_stmt { $$ = create_break_stmt(); }
-| CONTINUE_KEYWORD many_end_of_stmt { $$ = create_continue_stmt(); }
+| BREAK_KEYWORD end_of_stmt { $$ = create_break_stmt(); }
+| CONTINUE_KEYWORD end_of_stmt { $$ = create_continue_stmt(); }
 ;
 
 stmt_list_not_empty: stmt { $$ = create_stmt_list($1); }
-| stmt_list_not_empty empty_or_many_line_break stmt { $$ = add_to_stmt_list($1, $2); }
+| stmt_list_not_empty stmt { $$ = add_to_stmt_list($1, $2); }
 ;
 
 stmt_list: /* empty */ { $$ = 0; }
 | stmt_list_not_empty { $$ = $1; }
 ;
 
-body: '{' empty_or_many_line_break stmt_list '}' many_end_of_stmt { $$ = create_block($3); }
+body: '{' empty_or_many_line_break stmt_list '}' end_of_stmt { $$ = create_block($3); }
 ;
 
-for_stmt_init_stmt: ';' empty_or_many_line_break { $$ = create_empty_stmt(); }
-| expr one_similicon_or_many_line_break { $$ = create_node_stmt($1); }
-| inc_dec_stmt one_similicon_or_many_line_break{ $$ = $1; }
-| assign one_similicon_or_many_line_break { $$ = $1; }
-| short_var_decl one_similicon_or_many_line_break{ $$ = $1; }
+for_stmt_init_stmt: ';' { $$ = create_empty_stmt(); }
+| expr { $$ = create_node_stmt($1); }
+| inc_dec_stmt { $$ = $1; }
+| assign  { $$ = $1; }
+| short_var_decl { $$ = $1; }
 ;
 
 for_stmt_post_stmt: /* empty */ { $$ = create_empty_stmt(); }
@@ -372,25 +364,25 @@ else_if_stmt_list: else_if_stmt { $$ = create_else_if_stmt_list($1); }
 ;
 
 param_decl: ID complex_data { $$ = create_param($2, create_id($1)); }
-    | complex_data { $$ = create_param($1, 0); }
+| complex_data { $$ = create_param($1, 0); }
 ;
 
 param_list: param_decl { $$ = create_param_list($1); }
-    | param_list one_similicon_or_many_line_break param_decl { $$ = add_to_param_list($1, $3); }
+| param_list one_similicon_or_many_line_break param_decl { $$ = add_to_param_list($1, $3); }
 ;
 
 params: '(' empty_or_many_line_break param_list ')' { $$ = $3; }
-    | '(' empty_or_many_line_break ')' { $$ = 0; }
-    | '(' empty_or_many_line_break param_list ',' empty_or_many_line_break ')' { $$ = $3; }
+| '(' empty_or_many_line_break ')' { $$ = 0; }
+| '(' empty_or_many_line_break param_list ',' empty_or_many_line_break ')' { $$ = $3; }
 ;
 
 return_v: params { $$ = create_return_with_values($1); }
 | complex_data { $$ = create_type_of_return($1); }
 ;
 
-func_decl: FUNC_KEYWORD empty_or_many_line_break ID params return_v many_end_of_stmt { $$ = create_func_decl(create_prototype($3, $4, $5), 0); }
+func_decl: FUNC_KEYWORD empty_or_many_line_break ID params return_v end_of_stmt { $$ = create_func_decl(create_prototype($3, $4, $5), 0); }
 | FUNC_KEYWORD empty_or_many_line_break ID params return_v body { $$ = create_func_decl(create_prototype($3, $4, $5), $6); }
-| FUNC_KEYWORD empty_or_many_line_break ID params many_end_of_stmt{ $$ = create_func_decl(create_prototype($3, $4, 0), 0); }
+| FUNC_KEYWORD empty_or_many_line_break ID params end_of_stmt{ $$ = create_func_decl(create_prototype($3, $4, 0), 0); }
 | FUNC_KEYWORD empty_or_many_line_break ID params body { $$ = create_func_decl(create_prototype($3, $4, 0), $5); }
 ;
 

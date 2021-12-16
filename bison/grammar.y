@@ -228,7 +228,7 @@ expr: l_value { $$ = $1; }
 | expr EQUAL empty_or_many_line_break expr { $$ = create_oper_node(equal, $1, $4); }
 | expr NOT_EQUAL empty_or_many_line_break expr { $$ = create_oper_node(not_equal, $1, $4); }
 | ID '(' empty_or_many_line_break expr_list ')' { $$ = create_func_call($1, $4); } 
-| ID '.' empty_or_many_line_break ID '(' empty_or_many_line_break expr_list ')' {$$ = create_method_use_in_package_node($1, $4, $7); }
+| expr '.' empty_or_many_line_break ID '(' empty_or_many_line_break expr_list ')' {$$ = create_method_use_in_package_node($1, $4, $7); }
 ;
 
 expr_list: /* empty */ { $$ = 0; }
@@ -278,8 +278,8 @@ var_decl: VAR_KEYWORD empty_or_many_line_break var_v { $$ = create_decl_stmt($3,
 
 l_value: ID { $$ = create_id_node($1); }
 | '(' empty_or_many_line_break l_value')' { $$ = $3; }
-| ID '.' empty_or_many_line_break ID { $$ = create_id_use_in_package_node($1, $4); }
-| expr '[' empty_or_many_line_break expr ']' { $$ = create_oper_node(array_indexing, $1, $4); }
+| expr '.' empty_or_many_line_break ID { $$ = create_id_use_in_package_node($1, $4); }
+| l_value '[' empty_or_many_line_break expr ']' { $$ = create_oper_node(array_indexing, $1, $4); }
 
 
 l_value_list_not_empty: l_value { $$ = create_node_list($1);}
@@ -397,6 +397,7 @@ func_decl: FUNC_KEYWORD empty_or_many_line_break ID params return_v many_end_of_
 highest_decl: const_decl one_similicon_or_many_line_break{ $$ = create_highest_declaration($1->decl_stmt_field); }
 | var_decl one_similicon_or_many_line_break{ $$ = create_highest_declaration($1->decl_stmt_field); }
 | func_decl { $$ = $1; }
+| empty_or_many_line_break { $$ = $1;}
 ;
 
 highest_decl_list_not_empty: highest_decl { $$ = create_highest_decl_list($1); }

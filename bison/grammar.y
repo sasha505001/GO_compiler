@@ -83,7 +83,6 @@ extern struct program_struct* root;
 %type<String> empty_or_many_line_break
 %type<String> one_similicon_or_many_line_break
 %type<String> many_line_break
-%type<String> end_of_stmt
 
 %type<node_value> expr
 %type<stmt_value> for_stmt
@@ -109,7 +108,6 @@ extern struct program_struct* root;
 %type<stmt_value> assign
 %type<stmt_value> short_var_decl
 %type<stmt_value> simple_stmt_not_empty
-%type<stmt_value> simple_stmt
 %type<stmt_value> return_stmt
 %type<stmt_value> stmt
 %type<stmt_list_value> stmt_list_not_empty
@@ -156,13 +154,9 @@ one_similicon_or_many_line_break: ';' {$$ = ';';}
 | many_line_break {$$ = $1;}
 ;
 
-end_of_stmt: one_similicon_or_many_line_break{ $$ = $1;}
-| end_of_stmt one_similicon_or_many_line_break {$$ = $1;}
-
-
 
 program: package_v one_similicon_or_many_line_break highest_decl_list { root = create_program($1, $3); }
-| package_v one_similicon_or_many_line_break import_decl_list one_similicon_or_many_line_break highest_decl_list { root = create_program_with_imports($1, $3, $5); }
+| package_v one_similicon_or_many_line_break import_decl_list highest_decl_list { root = create_program_with_imports($1, $3, $4); }
 ;
 
 import_decl_list: import_one_of_list { $$ = create_import_decl_list($1);}
@@ -185,8 +179,6 @@ import_v: '.' empty_or_many_line_break STRING one_similicon_or_many_line_break {
 
 package_v: PACKAGE_KEYWORD empty_or_many_line_break ID{ $$ = create_package_decl($3); }
 ;
-
-
 
 
 complex_data: INT_KEYWORD { $$ = create_complex_data_type(int_t); }
@@ -230,8 +222,6 @@ expr_list: /* empty */ { $$ = 0; }
 expr_list_not_empty: expr { $$ = create_node_list($1);  }
 | expr_list_not_empty ',' empty_or_many_line_break expr { $$ = add_to_node_list($1, $4);  }
 ;
-
-
 
 
 const_v: ID '=' empty_or_many_line_break expr { $$ = create_all_decl(create_id($1), $4, 0); }
@@ -299,22 +289,19 @@ simple_stmt_not_empty: expr { $$ = create_node_stmt($1); }
 | short_var_decl { $$ = $1; }
 ;
 
-simple_stmt: /* empty */ { $$ = create_empty_stmt(); }
-| simple_stmt_not_empty { $$ = $1; }
+return_stmt: RETURN_KEYWORD expr_list one_similicon_or_many_line_break { $$ = create_return_stmt($2); }
 ;
 
-return_stmt: RETURN_KEYWORD expr_list end_of_stmt { $$ = create_return_stmt($2); }
-;
-
-stmt: simple_stmt_not_empty end_of_stmt { $$ = $1; }
-| const_decl end_of_stmt{ $$ = $1; }
-| var_decl end_of_stmt{ $$ = $1; }
+stmt: ';' many_line_break {$$ = ';';} 
+|simple_stmt_not_empty one_similicon_or_many_line_break { $$ = $1; }
+| const_decl one_similicon_or_many_line_break{ $$ = $1; }
+| var_decl one_similicon_or_many_line_break{ $$ = $1; }
 | return_stmt { $$ = $1; }
 | if_stmt { $$ = $1; }
 | for_stmt { $$ = $1; }
 | body { $$ = $1; }
-| BREAK_KEYWORD end_of_stmt { $$ = create_break_stmt(); }
-| CONTINUE_KEYWORD end_of_stmt { $$ = create_continue_stmt(); }
+| BREAK_KEYWORD one_similicon_or_many_line_break { $$ = create_break_stmt(); }
+| CONTINUE_KEYWORD one_similicon_or_many_line_break { $$ = create_continue_stmt(); }
 ;
 
 stmt_list_not_empty: stmt { $$ = create_stmt_list($1); }
@@ -325,7 +312,7 @@ stmt_list: /* empty */ { $$ = 0; }
 | stmt_list_not_empty { $$ = $1; }
 ;
 
-body: '{' empty_or_many_line_break stmt_list '}' end_of_stmt { $$ = create_block($3); }
+body: '{' empty_or_many_line_break stmt_list '}' one_similicon_or_many_line_break { $$ = create_block($3); }
 ;
 
 for_stmt_init_stmt: ';' { $$ = create_empty_stmt(); }
@@ -346,7 +333,7 @@ for_stmt: FOR_KEYWORD empty_or_many_line_break body { $$ = create_empty_for_stmt
 | FOR_KEYWORD empty_or_many_line_break for_stmt_init_stmt one_similicon_or_many_line_break expr one_similicon_or_many_line_break for_stmt_post_stmt body { $$ = create_for_with_block_stmt($3, $7, $5, $8); }
 ;
 
-if_start_block: IF_KEYWORD empty_or_many_line_break simple_stmt one_similicon_or_many_line_break expr body { $$ = create_if_stmt_block($3, $5, $6); }
+if_start_block: IF_KEYWORD empty_or_many_line_break simple_stmt_not_empty one_similicon_or_many_line_break expr body { $$ = create_if_stmt_block($3, $5, $6); }
 | IF_KEYWORD empty_or_many_line_break expr body { $$ = create_if_stmt_block(0, $3, $4); }
 ;
 
@@ -380,9 +367,9 @@ return_v: params { $$ = create_return_with_values($1); }
 | complex_data { $$ = create_type_of_return($1); }
 ;
 
-func_decl: FUNC_KEYWORD empty_or_many_line_break ID params return_v end_of_stmt { $$ = create_func_decl(create_prototype($3, $4, $5), 0); }
+func_decl: FUNC_KEYWORD empty_or_many_line_break ID params return_v one_similicon_or_many_line_break { $$ = create_func_decl(create_prototype($3, $4, $5), 0); }
 | FUNC_KEYWORD empty_or_many_line_break ID params return_v body { $$ = create_func_decl(create_prototype($3, $4, $5), $6); }
-| FUNC_KEYWORD empty_or_many_line_break ID params end_of_stmt{ $$ = create_func_decl(create_prototype($3, $4, 0), 0); }
+| FUNC_KEYWORD empty_or_many_line_break ID params one_similicon_or_many_line_break{ $$ = create_func_decl(create_prototype($3, $4, 0), 0); }
 | FUNC_KEYWORD empty_or_many_line_break ID params body { $$ = create_func_decl(create_prototype($3, $4, 0), $5); }
 ;
 

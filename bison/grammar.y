@@ -292,7 +292,7 @@ simple_stmt_not_empty: expr { $$ = create_node_stmt($1); }
 return_stmt: RETURN_KEYWORD expr_list one_similicon_or_many_line_break { $$ = create_return_stmt($2); }
 ;
 
-stmt: ';' many_line_break {$$ = ';';} 
+stmt: ';' empty_or_many_line_break {$$ = ';';} 
 |simple_stmt_not_empty one_similicon_or_many_line_break { $$ = $1; }
 | const_decl one_similicon_or_many_line_break{ $$ = $1; }
 | var_decl one_similicon_or_many_line_break{ $$ = $1; }

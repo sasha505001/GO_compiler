@@ -464,14 +464,3 @@ _ {printf( "Empty ID: %s\n", yytext );}
 
 
 %%
-
-void main(int argc, char* argv[])
-{
-    
-    yyin = fopen("C:\\Users\\astre\\Desktop\\flex_origine\\test.txt", "r");
-   
-	yylex();
-	
-	//getch();
-
-}

@@ -399,3 +399,13 @@ array_element_v: expr { $$ = create_array_element($1); }
 ;
 
 %%
+
+void main(int argc, char* argv[])
+{
+    yyin = fopen(argv[1], "r");
+   
+	yyparse();
+
+    return 0;
+
+}

@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include "grammar_tab.h"
+#include "grammar_tab.c"
 
 /*
     Функция для конкотенации выделенной памяти (char) и строки(для успешного её последуещего очищения 

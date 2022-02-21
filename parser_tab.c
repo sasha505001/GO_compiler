@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from c:\users\astre\desktop\bison_poligon\grammar.y with Bison version GNU Bison version 1.24
+/*  A Bison parser, made from c:\users\astre\desktop\bison_flex\b\parser.y with Bison version GNU Bison version 1.24
   */
 
 #define YYBISON 1  /* Identify Bison output.  */
@@ -39,17 +39,17 @@
 #define	STRING	290
 #define	UMINUS	291
 
-#line 1 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 1 "c:\users\astre\desktop\bison_flex\b\parser.y"
 
 
 #include <stdio.h>
 #include "create_tree_nodes.cpp"
-
-
+#include "create_tree.h"
+#inclide "create_tree.cpp"
 extern struct program_struct* root;
 
 
-#line 11 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 11 "c:\users\astre\desktop\bison_flex\b\parser.y"
 typedef union {
     int Int_val;
     char* Id;
@@ -1009,603 +1009,603 @@ yyreduce:
   switch (yyn) {
 
 case 1:
-#line 145 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 145 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.String = '\n';;
     break;}
 case 2:
-#line 146 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 146 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.String = yyvsp[-1].String;;
     break;}
 case 3:
-#line 149 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 149 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.String = 0; ;
     break;}
 case 4:
-#line 150 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 150 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.String = yyvsp[0].String;;
     break;}
 case 5:
-#line 153 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 153 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.String = ';';;
     break;}
 case 6:
-#line 154 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 154 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.String = yyvsp[0].String;;
     break;}
 case 7:
-#line 158 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 158 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { root = create_program(yyvsp[-2].package_value, yyvsp[0].highest_decl_list_value); ;
     break;}
 case 8:
-#line 159 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 159 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { root = create_program_with_imports(yyvsp[-3].package_value, yyvsp[-1].import_decl_list_value, yyvsp[0].highest_decl_list_value); ;
     break;}
 case 9:
-#line 162 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 162 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_decl_list_value = create_import_decl_list(yyvsp[0].import_one_of_list_value);;
     break;}
 case 10:
-#line 163 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 163 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_decl_list_value = add_to_import_decl_list(yyvsp[-1].import_decl_list_value, yyvsp[0].import_one_of_list_value);;
     break;}
 case 11:
-#line 166 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 166 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_one_of_list_value = create_import_decl(yyvsp[0].import_value); ;
     break;}
 case 12:
-#line 167 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 167 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_one_of_list_value = create_import_decl_one_of_list_list(yyvsp[-2].import_list_value); ;
     break;}
 case 13:
-#line 171 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 171 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_list_value = create_import_list(yyvsp[0].import_value); ;
     break;}
 case 14:
-#line 172 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 172 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_list_value = add_to_import_list(yyvsp[-1].import_list_value, yyvsp[0].import_value);;
     break;}
 case 15:
-#line 175 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 175 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_value = create_import(yyvsp[-1].String); ;
     break;}
 case 16:
-#line 176 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 176 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_value = create_import(yyvsp[-1].String); ;
     break;}
 case 17:
-#line 177 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 177 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.import_value = create_import_with_alias(yyvsp[-2].Id, yyvsp[-1].String); ;
     break;}
 case 18:
-#line 180 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 180 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.package_value = create_package_decl(yyvsp[0].Id); ;
     break;}
 case 19:
-#line 184 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 184 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_complex_data_type(int_t); ;
     break;}
 case 20:
-#line 185 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 185 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_complex_data_type(bool_t); ;
     break;}
 case 21:
-#line 186 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 186 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_complex_data_type(byte_t); ;
     break;}
 case 22:
-#line 187 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 187 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_complex_data_type(string_t); ;
     break;}
 case 23:
-#line 188 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 188 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_array_type(yyvsp[-2].node_value, yyvsp[0].complex_data_value); ;
     break;}
 case 24:
-#line 189 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 189 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_function_type(create_prototype(0, yyvsp[-2].param_list_value, yyvsp[0].return_value)); ;
     break;}
 case 25:
-#line 190 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 190 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_function_type(create_prototype(0, 0, yyvsp[0].return_value)); ;
     break;}
 case 26:
-#line 191 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 191 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_function_type(create_prototype(0, yyvsp[-4].param_list_value, yyvsp[0].return_value)); ;
     break;}
 case 27:
-#line 192 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 192 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_function_type(create_prototype(0, yyvsp[-1].param_list_value, 0)); ;
     break;}
 case 28:
-#line 193 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 193 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_function_type(create_prototype(0, 0, 0)); ;
     break;}
 case 29:
-#line 194 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 194 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.complex_data_value = create_function_type(create_prototype(0, yyvsp[-3].param_list_value, 0)); ;
     break;}
 case 30:
-#line 197 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 197 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = yyvsp[0].node_value; ;
     break;}
 case 31:
-#line 198 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 198 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_array_lit(yyvsp[-4].complex_data_value, yyvsp[-6].node_value, yyvsp[-1].array_element_list_value); ;
     break;}
 case 32:
-#line 199 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 199 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_int_node(yyvsp[0].Int_val); ;
     break;}
 case 33:
-#line 200 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 200 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_string_node(yyvsp[0].String); ;
     break;}
 case 34:
-#line 201 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 201 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_boolean_node(1); ;
     break;}
 case 35:
-#line 202 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 202 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_boolean_node(0); ;
     break;}
 case 36:
-#line 203 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 203 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(unary_minus, yyvsp[0].node_value, 0); ;
     break;}
 case 37:
-#line 204 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 204 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(minus, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 38:
-#line 205 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 205 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(plus, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 39:
-#line 206 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 206 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(mul, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 40:
-#line 207 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 207 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(divide, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 41:
-#line 208 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 208 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(less, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 42:
-#line 209 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 209 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(greater, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 43:
-#line 210 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 210 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(greater_or_equal, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 44:
-#line 211 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 211 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(less_or_equal, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 45:
-#line 212 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 212 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(equal, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 46:
-#line 213 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 213 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(not_equal, yyvsp[-3].node_value, yyvsp[0].node_value); ;
     break;}
 case 47:
-#line 214 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 214 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_func_call(yyvsp[-4].Id, yyvsp[-1].node_list_value); ;
     break;}
 case 48:
-#line 215 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 215 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.node_value = create_method_use_in_package_node(yyvsp[-7].node_value, yyvsp[-4].Id, yyvsp[-1].node_list_value); ;
     break;}
 case 49:
-#line 218 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 218 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_list_value = 0; ;
     break;}
 case 50:
-#line 219 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 219 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_list_value = yyvsp[0].node_list_value; ;
     break;}
 case 51:
-#line 222 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 222 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_list_value = create_node_list(yyvsp[0].node_value);  ;
     break;}
 case 52:
-#line 223 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 223 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_list_value = add_to_node_list(yyvsp[-3].node_list_value, yyvsp[0].node_value);  ;
     break;}
 case 53:
-#line 227 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 227 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_value = create_all_decl(create_id(yyvsp[-3].Id), yyvsp[0].node_value, 0); ;
     break;}
 case 54:
-#line 228 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 228 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_value = create_all_decl(create_id(yyvsp[-4].Id), yyvsp[0].node_value, yyvsp[-3].complex_data_value); ;
     break;}
 case 55:
-#line 231 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 231 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = create_all_decl_list(yyvsp[0].decl_all_value); ;
     break;}
 case 56:
-#line 232 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 232 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = add_to_all_decl_list(yyvsp[-2].decl_all_list_value, yyvsp[0].decl_all_value); ;
     break;}
 case 57:
-#line 235 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 235 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = 0; ;
     break;}
 case 58:
-#line 236 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 236 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = yyvsp[0].decl_all_list_value; ;
     break;}
 case 59:
-#line 239 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 239 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_decl_stmt(yyvsp[0].decl_all_value, const_t); ;
     break;}
 case 60:
-#line 240 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 240 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_decl_stmt_from_list(yyvsp[-1].decl_all_list_value, const_t); ;
     break;}
 case 61:
-#line 243 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 243 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_value = create_all_decl(create_id(yyvsp[-1].Id), 0, yyvsp[0].complex_data_value); ;
     break;}
 case 62:
-#line 244 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 244 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_value = create_all_decl(create_id(yyvsp[-4].Id), yyvsp[0].node_value, yyvsp[-3].complex_data_value); ;
     break;}
 case 63:
-#line 245 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 245 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_value = create_all_decl(create_id(yyvsp[-3].Id), yyvsp[0].node_value, 0); ;
     break;}
 case 64:
-#line 248 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 248 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = create_all_decl_list(yyvsp[0].decl_all_value); ;
     break;}
 case 65:
-#line 249 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 249 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = add_to_all_decl_list(yyvsp[-2].decl_all_list_value, yyvsp[0].decl_all_value); ;
     break;}
 case 66:
-#line 252 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 252 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = 0; ;
     break;}
 case 67:
-#line 253 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 253 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.decl_all_list_value = yyvsp[0].decl_all_list_value; ;
     break;}
 case 68:
-#line 255 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 255 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_decl_stmt(yyvsp[0].decl_all_value, var_t); ;
     break;}
 case 69:
-#line 256 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 256 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_decl_stmt_from_list(yyvsp[-1].decl_all_list_value, var_t); ;
     break;}
 case 70:
-#line 261 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 261 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_id_node(yyvsp[0].Id); ;
     break;}
 case 71:
-#line 262 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 262 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = yyvsp[-1].node_value; ;
     break;}
 case 72:
-#line 263 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 263 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_id_use_in_package_node(yyvsp[-3].node_value, yyvsp[0].Id); ;
     break;}
 case 73:
-#line 264 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 264 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_value = create_oper_node(array_indexing, yyvsp[-4].node_value, yyvsp[-1].node_value); ;
     break;}
 case 74:
-#line 267 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 267 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_list_value = create_node_list(yyvsp[0].node_value);;
     break;}
 case 75:
-#line 268 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 268 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.node_list_value = add_to_node_list(yyvsp[-3].node_list_value, yyvsp[0].node_value); ;
     break;}
 case 76:
-#line 272 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 272 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_inc_dec_stmt(yyvsp[-1].node_value, inc_t); ;
     break;}
 case 77:
-#line 273 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 273 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_inc_dec_stmt(yyvsp[-1].node_value, dec_t); ;
     break;}
 case 78:
-#line 276 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 276 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_assignment(simple_assignment_t, yyvsp[-3].node_list_value, yyvsp[0].node_list_value); ;
     break;}
 case 79:
-#line 277 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 277 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_assignment(plus_assignment_t, yyvsp[-3].node_list_value, yyvsp[0].node_list_value); ;
     break;}
 case 80:
-#line 278 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 278 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_assignment(minus_assignment_t, yyvsp[-3].node_list_value, yyvsp[0].node_list_value); ;
     break;}
 case 81:
-#line 279 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 279 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_assignment(mul_assignment_t, yyvsp[-3].node_list_value, yyvsp[0].node_list_value); ;
     break;}
 case 82:
-#line 280 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 280 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_assignment(div_assignment_t, yyvsp[-3].node_list_value, yyvsp[0].node_list_value); ;
     break;}
 case 83:
-#line 283 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 283 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_short_decl(create_id(yyvsp[-3].Id), yyvsp[0].node_value); ;
     break;}
 case 84:
-#line 286 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 286 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_node_stmt(yyvsp[0].node_value); ;
     break;}
 case 85:
-#line 287 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 287 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 86:
-#line 288 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 288 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 87:
-#line 289 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 289 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 88:
-#line 292 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 292 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_return_stmt(yyvsp[-1].node_list_value); ;
     break;}
 case 89:
-#line 295 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 295 "c:\users\astre\desktop\bison_flex\b\parser.y"
 {yyval.stmt_value = ';';;
     break;}
 case 90:
-#line 296 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 296 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[-1].stmt_value; ;
     break;}
 case 91:
-#line 297 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 297 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[-1].stmt_value; ;
     break;}
 case 92:
-#line 298 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 298 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[-1].stmt_value; ;
     break;}
 case 93:
-#line 299 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 299 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 94:
-#line 300 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 300 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 95:
-#line 301 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 301 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 96:
-#line 302 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 302 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 97:
-#line 303 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 303 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_break_stmt(); ;
     break;}
 case 98:
-#line 304 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 304 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_continue_stmt(); ;
     break;}
 case 99:
-#line 307 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 307 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_list_value = create_stmt_list(yyvsp[0].stmt_value); ;
     break;}
 case 100:
-#line 308 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 308 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_list_value = add_to_stmt_list(yyvsp[-1].stmt_list_value, yyvsp[0].stmt_value); ;
     break;}
 case 101:
-#line 311 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 311 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_list_value = 0; ;
     break;}
 case 102:
-#line 312 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 312 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_list_value = yyvsp[0].stmt_list_value; ;
     break;}
 case 103:
-#line 315 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 315 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_block(yyvsp[-2].stmt_list_value); ;
     break;}
 case 104:
-#line 318 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 318 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_empty_stmt(); ;
     break;}
 case 105:
-#line 319 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 319 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_node_stmt(yyvsp[0].node_value); ;
     break;}
 case 106:
-#line 320 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 320 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 107:
-#line 321 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 321 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 108:
-#line 322 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 322 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 109:
-#line 325 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 325 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_empty_stmt(); ;
     break;}
 case 110:
-#line 326 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 326 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_node_stmt(yyvsp[0].node_value); ;
     break;}
 case 111:
-#line 327 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 327 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 112:
-#line 328 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 328 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = yyvsp[0].stmt_value; ;
     break;}
 case 113:
-#line 331 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 331 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_empty_for_stmt(yyvsp[0].stmt_value); ;
     break;}
 case 114:
-#line 332 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 332 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_for_with_condition(yyvsp[-1].node_value, yyvsp[0].stmt_value); ;
     break;}
 case 115:
-#line 333 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 333 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_for_with_block_stmt(yyvsp[-5].stmt_value, yyvsp[-1].stmt_value, yyvsp[-3].node_value, yyvsp[0].stmt_value); ;
     break;}
 case 116:
-#line 336 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 336 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.if_stmt_block_value = create_if_stmt_block(yyvsp[-3].stmt_value, yyvsp[-1].node_value, yyvsp[0].stmt_value); ;
     break;}
 case 117:
-#line 337 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 337 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.if_stmt_block_value = create_if_stmt_block(0, yyvsp[-1].node_value, yyvsp[0].stmt_value); ;
     break;}
 case 118:
-#line 340 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 340 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_if_stmt(yyvsp[0].if_stmt_block_value, 0, 0); ;
     break;}
 case 119:
-#line 341 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 341 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_if_stmt(yyvsp[-3].if_stmt_block_value, 0, yyvsp[0].stmt_value); ;
     break;}
 case 120:
-#line 342 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 342 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_if_stmt(yyvsp[-4].if_stmt_block_value, yyvsp[-3].else_if_stmt_list_value, yyvsp[0].stmt_value); ;
     break;}
 case 121:
-#line 343 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 343 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.stmt_value = create_if_stmt(yyvsp[-1].if_stmt_block_value, yyvsp[0].else_if_stmt_list_value, 0); ;
     break;}
 case 122:
-#line 346 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 346 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.if_stmt_block_value = yyvsp[0].if_stmt_block_value; ;
     break;}
 case 123:
-#line 349 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 349 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.else_if_stmt_list_value = create_else_if_stmt_list(yyvsp[0].if_stmt_block_value); ;
     break;}
 case 124:
-#line 350 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 350 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.else_if_stmt_list_value = add_to_else_if_stmt_list(yyvsp[-1].else_if_stmt_list_value, yyvsp[0].if_stmt_block_value); ;
     break;}
 case 125:
-#line 353 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 353 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_value = create_param(yyvsp[0].complex_data_value, create_id(yyvsp[-1].Id)); ;
     break;}
 case 126:
-#line 354 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 354 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_value = create_param(yyvsp[0].complex_data_value, 0); ;
     break;}
 case 127:
-#line 357 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 357 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_list_value = create_param_list(yyvsp[0].param_value); ;
     break;}
 case 128:
-#line 358 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 358 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_list_value = add_to_param_list(yyvsp[-2].param_list_value, yyvsp[0].param_value); ;
     break;}
 case 129:
-#line 361 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 361 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_list_value = yyvsp[-1].param_list_value; ;
     break;}
 case 130:
-#line 362 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 362 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_list_value = 0; ;
     break;}
 case 131:
-#line 363 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 363 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.param_list_value = yyvsp[-3].param_list_value; ;
     break;}
 case 132:
-#line 366 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 366 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.return_value = create_return_with_values(yyvsp[0].param_list_value); ;
     break;}
 case 133:
-#line 367 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 367 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.return_value = create_type_of_return(yyvsp[0].complex_data_value); ;
     break;}
 case 134:
-#line 370 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 370 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = create_func_decl(create_prototype(yyvsp[-3].Id, yyvsp[-2].param_list_value, yyvsp[-1].return_value), 0); ;
     break;}
 case 135:
-#line 371 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 371 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = create_func_decl(create_prototype(yyvsp[-3].Id, yyvsp[-2].param_list_value, yyvsp[-1].return_value), yyvsp[0].stmt_value); ;
     break;}
 case 136:
-#line 372 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 372 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = create_func_decl(create_prototype(yyvsp[-2].Id, yyvsp[-1].param_list_value, 0), 0); ;
     break;}
 case 137:
-#line 373 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 373 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = create_func_decl(create_prototype(yyvsp[-2].Id, yyvsp[-1].param_list_value, 0), yyvsp[0].stmt_value); ;
     break;}
 case 138:
-#line 376 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 376 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = create_highest_declaration(yyvsp[-1].stmt_value->decl_stmt_field); ;
     break;}
 case 139:
-#line 377 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 377 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = create_highest_declaration(yyvsp[-1].stmt_value->decl_stmt_field); ;
     break;}
 case 140:
-#line 378 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 378 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_value = yyvsp[0].highest_decl_value; ;
     break;}
 case 141:
-#line 381 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 381 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_list_value = create_highest_decl_list(yyvsp[0].highest_decl_value); ;
     break;}
 case 142:
-#line 382 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 382 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_list_value = add_to_highest_decl_list(yyvsp[-1].highest_decl_list_value, yyvsp[0].highest_decl_value); ;
     break;}
 case 143:
-#line 385 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 385 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_list_value = 0; ;
     break;}
 case 144:
-#line 386 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 386 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.highest_decl_list_value = yyvsp[0].highest_decl_list_value; ;
     break;}
 case 145:
-#line 389 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 389 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.array_element_list_value = 0;  ;
     break;}
 case 146:
-#line 390 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 390 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.array_element_list_value = yyvsp[0].array_element_list_value; ;
     break;}
 case 147:
-#line 393 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 393 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.array_element_list_value = create_array_element_list(yyvsp[0].array_element_value);  ;
     break;}
 case 148:
-#line 394 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 394 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.array_element_list_value = add_to_array_element_list(yyvsp[-3].array_element_list_value, yyvsp[0].array_element_value); ;
     break;}
 case 149:
-#line 397 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 397 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.array_element_value = create_array_element(yyvsp[0].node_value); ;
     break;}
 case 150:
-#line 398 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 398 "c:\users\astre\desktop\bison_flex\b\parser.y"
 { yyval.array_element_value = create_array_indexed_element(yyvsp[-3].Int_val, yyvsp[0].node_value); ;
     break;}
 }
@@ -1806,4 +1806,17 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 401 "c:\users\astre\desktop\bison_poligon\grammar.y"
+#line 401 "c:\users\astre\desktop\bison_flex\b\parser.y"
+
+
+int main(int argc, char** argv) {
+    yyin = fopen(argv[1], "r");
+
+    FILE* tree = fopen("tree.dot", "w");
+
+    yyparse();
+
+    print_program_tree(root, tree);
+
+    return 0;
+}

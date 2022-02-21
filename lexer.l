@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-#include "grammar_tab.h"
-#include "grammar_tab.c"
+#include "parser_tab.h"
+#include "parser_tab.c"
 
 /*
     Функция для конкотенации выделенной памяти (char) и строки(для успешного её последуещего очищения 
@@ -426,12 +426,11 @@ _ {printf( "Empty ID: %s\n", yytext );}
     BEGIN(INITIAL);
 }
 
-<RUNE>.{1} {safe_strcat(&text,yytext);}
-<RUNE><<EOF>> {
-    printf("Error:there is no symbol completing the rune");
-    BEGIN(INITIAL);
+<RUNE>[^'] {
+    safe_strcat(&text,yytext);
 }
-<RUNE>\' {
+
+<RUNE>"'" {
     safe_strcat(&text, "\'");
     printf("The rune literal: %s\n",text);
     free(text);

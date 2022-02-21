@@ -2,8 +2,8 @@
 
 #include <stdio.h>
 #include "create_tree_nodes.cpp"
-
-
+#include "create_tree.h"
+#inclide "create_tree.cpp"
 extern struct program_struct* root;
 
 %}
@@ -399,3 +399,15 @@ array_element_v: expr { $$ = create_array_element($1); }
 ;
 
 %%
+
+int main(int argc, char** argv) {
+    yyin = fopen(argv[1], "r");
+
+    FILE* tree = fopen("tree.dot", "w");
+
+    yyparse();
+
+    print_program_tree(root, tree);
+
+    return 0;
+}

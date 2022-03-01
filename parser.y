@@ -3,8 +3,10 @@
 #include <stdio.h>
 #include "create_tree_nodes.cpp"
 #include "create_tree.h"
-#inclide "create_tree.cpp"
+#include "create_tree.cpp"
 extern struct program_struct* root;
+extern int yylex(void);
+extern int yyparse(void);
 
 %}
 
@@ -39,7 +41,7 @@ extern struct program_struct* root;
     struct highest_decl_list_struct* highest_decl_list_value;
     struct array_element_struct* array_element_value;
     struct array_element_list_struct* array_element_list_value;
-}
+};
 
 %token LESS
 %token GREATER
@@ -142,7 +144,7 @@ extern struct program_struct* root;
 
 %%
 
-many_line_break: '\n' {$$ = '\n';}
+many_line_break: '\n' {$$ = "\n";}
 | many_line_break '\n' {$$ = $1;}
 ;
 
@@ -150,7 +152,7 @@ empty_or_many_line_break: /* empty */ { $$ = 0; }
 | many_line_break {$$ = $1;}
 ;
 
-one_similicon_or_many_line_break: ';' {$$ = ';';}
+one_similicon_or_many_line_break: ';' {$$ = ";";}
 | many_line_break {$$ = $1;}
 ;
 
@@ -401,6 +403,8 @@ array_element_v: expr { $$ = create_array_element($1); }
 %%
 
 int main(int argc, char** argv) {
+    FILE * yyin;
+
     yyin = fopen(argv[1], "r");
 
     FILE* tree = fopen("tree.dot", "w");

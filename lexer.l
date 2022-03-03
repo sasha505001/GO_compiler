@@ -3,8 +3,18 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-#include "parser_tab.h"
-#include "parser_tab.c"
+#include "parser.tab.h"
+
+extern int yyparse(void);
+extern int yylex(void);
+extern int yyerror(char * s);
+int error_string = 1;
+
+int yyerror(char * s)
+{
+	printf("Error!\n%s on line %d\n", s, error_string);
+	return -1;
+}
 
 /*
     Функция для конкотенации выделенной памяти (char) и строки(для успешного её последуещего очищения 
@@ -200,7 +210,7 @@ var {
 
 "&=" {printf( "Operator: %s\n", yytext );}
 
-"&&" {printf( "Operator: %s\n", yytext ); return AND;}
+"&&" {printf( "Operator: %s\n", yytext );}
 
 "==" {printf( "Operator: %s\n", yytext ); return EQUAL;}
 
@@ -218,7 +228,7 @@ var {
 
 "|=" {printf( "Operator: %s\n", yytext );}
 
-"||" {printf( "Operator: %s\n", yytext ); return OR;}
+"||" {printf( "Operator: %s\n", yytext );}
 
 "<" {printf( "Operator: %s\n", yytext ); return '<';}
 
@@ -252,7 +262,7 @@ var {
 
 "<<=" {printf( "Operator: %s\n", yytext );}
 
-"++" {printf( "Operator: %s\n", yytext ); return INCREMENT;}
+"++" {printf( "Operator: %s\n", yytext ); return INC;}
 
 "=" {printf( "Operator: %s\n", yytext ); return '=';}
 
@@ -270,7 +280,7 @@ var {
 
 ">>=" {printf( "Operator: %s\n", yytext );}
 
-"--" {printf( "Operator: %s\n", yytext ); return DECREMENT;}
+"--" {printf( "Operator: %s\n", yytext ); return DEC;}
 
 "!" {printf( "Operator: %s\n", yytext ); return '!';}
 
@@ -420,7 +430,7 @@ _ {printf( "Empty ID: %s\n", yytext );}
     BEGIN(INITIAL);
 }
 <MULTI_LINES_COMMENT>"*/" {
-    safe_strcat(&text, "\*\/");
+    safe_strcat(&text, "*/");
     printf("The multi-line comment: %s\n",text);
     free(text);
     BEGIN(INITIAL);
@@ -451,7 +461,7 @@ _ {printf( "Empty ID: %s\n", yytext );}
 
 <RAW_STRING_LITERALS>[^`]+ {safe_strcat(&text,yytext);}
 <RAW_STRING_LITERALS>\` {
-    safe_strcat(&text, "\`");
+    safe_strcat(&text, "`");
     printf("The raw string literals: %s\n", text);
     free(text);
     BEGIN(INITIAL);
@@ -463,3 +473,4 @@ _ {printf( "Empty ID: %s\n", yytext );}
 
 
 %%
+

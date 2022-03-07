@@ -1,6 +1,6 @@
 #include "malloc.h"
 #include "tree_nodes.h"
-
+#include "stdio.h"
 struct node* create_int_node(int value) {
     struct node* result = (struct node*)malloc(sizeof(struct node));
     result->type = integer;
@@ -421,7 +421,7 @@ struct import_struct* create_import_with_alias(char* alias, char* path) {
 struct import_struct* create_import(char* path) {
     struct import_struct* result = (struct import_struct*)malloc(sizeof(struct import_struct));
     result->import_path = path;
-    result->alias = nullptr;
+    result->alias = NULL;
 
     return result;
 }
@@ -575,12 +575,12 @@ struct return_values_struct* create_return_with_values(struct param_list_struct*
     return func_return;
 }
 
-struct node* create_func_call(struct node* callable, struct node_list_struct* args) {
+struct node* create_func_call(char* callable, struct node_list_struct* args) {
     struct node* func_call = (struct node*)malloc(sizeof(struct node));
 
     func_call->type = call;
     func_call->args = args;
-    func_call->left = callable;
+    func_call->left = create_id_node(callable);
 
     return func_call;
 }
@@ -605,23 +605,23 @@ struct highest_decl_struct* create_highest_declaration(struct decl_stmt_struct* 
     return top_level_decl;
 }
 
-struct node* create_id_use_in_package_node(char* package_name, char* id_in_package) {
+struct node* create_id_use_in_package_node(struct node* package_name, char* id_in_package) {
     struct node* qualified_id = (struct node*)malloc(sizeof(struct node));
 
-    qualified_id->left = create_id_node(package_name);
+    qualified_id->left = package_name;
     qualified_id->right = create_id_node(id_in_package);
     qualified_id->type = qualified_identifier_t;
 
     return qualified_id;
 }
 
-struct node* create_method_use_in_package_node(char* package_name, char* name_of_method, struct node_list_struct* args)
+struct node* create_method_use_in_package_node(struct node* package_name, char* name_of_method, struct node_list_struct* args)
 {
     struct node* qualified_call_of_method = (struct node*)malloc(sizeof(struct node));
 
     qualified_call_of_method->type = qualified_call_method_t;
     qualified_call_of_method->args = args;
-    qualified_call_of_method->left = create_id_node(package_name);
+    qualified_call_of_method->left = package_name;
     qualified_call_of_method->right = create_id_node(name_of_method);
 
     return qualified_call_of_method;

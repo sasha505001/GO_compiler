@@ -2,9 +2,7 @@
 
 #include <stdio.h>
 #include "create_tree_nodes.cpp"
-#include "create_tree.h"
-#include "create_tree.cpp"
-struct program_struct* root;
+extern struct program_struct* root;
 extern int yylex(void);
 extern int yyparse(void);
 int yyerror(char * s);
@@ -403,16 +401,3 @@ array_element_v: expr { $$ = create_array_element($1); }
 
 %%
 
-int main(int argc, char** argv) {
-    FILE * yyin;
-
-    yyin = fopen(argv[1], "r");
-
-    FILE* tree = fopen("tree.dot", "w");
-
-    yyparse();
-
-    print_program_tree(root, tree);
-
-    return 0;
-}

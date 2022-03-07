@@ -526,15 +526,29 @@ static char *yy_last_accepting_cpos;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 char *yytext;
-#line 1 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 1 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 #define INITIAL 0
-#line 2 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 2 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 #include <stdlib.h>
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-#include "parser_tab.h"
-#include "parser_tab.c"
+#include "parser.tab.h"
+struct program_struct* root;
+#include "create_tree.cpp"
+#include "tree_nodes.h"
+
+
+extern int yyparse(void);
+extern int yylex(void);
+extern int yyerror(char * s);
+int error_string = 1;
+
+int yyerror(char * s)
+{
+	printf("Error!\n%s on line %d\n", s, error_string);
+	return -1;
+}
 
 /*
     Функция для конкотенации выделенной памяти (char) и строки(для успешного её последуещего очищения 
@@ -602,7 +616,7 @@ int str_to_binary_num(char* str, int len) {
  
 #define INTERPRETED_STRING_LITERALS 5
 
-#line 606 "lex.yy.c"
+#line 620 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -749,7 +763,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 86 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 100 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 
 
     char* text = '\0';
@@ -757,7 +771,7 @@ YY_DECL
     int tmp;
 
 
-#line 761 "lex.yy.c"
+#line 775 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -842,7 +856,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 93 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 107 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
 	printf("int\n");
 	return INT_KEYWORD;
@@ -850,7 +864,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 98 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 112 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
 	printf("bool\n");
 	return BOOL_KEYWORD;
@@ -858,7 +872,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 103 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 117 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
 	printf("string\n");
 	return STRING_KEYWORD;
@@ -866,7 +880,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 108 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 122 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
 	printf("true\n");
 	return TRUE_KEYWORD;
@@ -874,7 +888,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 113 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 127 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
 	printf("false\n");
 	return FALSE_KEYWORD;
@@ -882,7 +896,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 120 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 134 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return BREAK_KEYWORD;
@@ -890,12 +904,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 125 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 139 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 127 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 141 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return FUNC_KEYWORD;
@@ -903,27 +917,27 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 132 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 146 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 134 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 148 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 136 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 150 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 138 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 152 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 140 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 154 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return ELSE_KEYWORD;
@@ -931,12 +945,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 145 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 159 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 147 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 161 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return PACKAGE_KEYWORD;
@@ -944,12 +958,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 152 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 166 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 154 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 168 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return CONST_KEYWORD;
@@ -957,12 +971,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 159 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 173 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 161 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 175 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return IF_KEYWORD;
@@ -970,17 +984,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 166 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 180 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 168 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 182 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf("Keyword: %s\n", yytext);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 170 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 184 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return CONTINUE_KEYWORD;
@@ -988,7 +1002,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 175 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 189 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return FOR_KEYWORD;
@@ -996,7 +1010,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 180 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 194 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return IMPORT_KEYWORD;
@@ -1004,7 +1018,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 185 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 199 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return RETURN_KEYWORD;
@@ -1012,7 +1026,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 190 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 204 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Keyword: %s\n", yytext);
     return VAR_KEYWORD;
@@ -1020,252 +1034,252 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 195 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 209 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '+';}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 197 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 211 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 199 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 213 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return PLUS_ASSIGN;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 201 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 215 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 203 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
-{printf( "Operator: %s\n", yytext ); return AND;}
+#line 217 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
+{printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 205 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 219 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return EQUAL;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 207 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 221 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return NOT_EQUAL;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 209 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 223 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '(';}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 211 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 225 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return ')';}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 213 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 227 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '-';}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 215 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 229 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 217 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 231 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return MINUS_ASSIGN;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 219 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 233 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 221 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
-{printf( "Operator: %s\n", yytext ); return OR;}
+#line 235 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
+{printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 223 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 237 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '<';}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 225 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 239 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return LESS_OR_EQUAL;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 227 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 241 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '[';}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 229 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 243 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return ']';}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 231 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 245 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '*';}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 233 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 247 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 235 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 249 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return MULTIPLY_ASSIGN;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 237 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 251 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 239 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 253 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '>';}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 241 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 255 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return GREATER_OR_EQUAL;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 243 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 257 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '{';}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 245 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 259 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '}';}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 247 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 261 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '/';}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 249 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 263 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 251 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 265 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return DIVISION_ASSIGN;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 253 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 267 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 255 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
-{printf( "Operator: %s\n", yytext ); return INCREMENT;}
+#line 269 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
+{printf( "Operator: %s\n", yytext ); return INC;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 257 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 271 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '=';}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 259 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 273 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return SHORT_EQUALS;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 261 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 275 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return ',';}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 263 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 277 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Separator: %s\n", yytext ); return ';';}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 265 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 279 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '%';}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 267 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 281 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 269 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 283 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 271 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 285 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 273 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
-{printf( "Operator: %s\n", yytext ); return DECREMENT;}
+#line 287 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
+{printf( "Operator: %s\n", yytext ); return DEC;}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 275 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 289 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '!';}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 277 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 291 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 279 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 293 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return '.';}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 281 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 295 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext ); return ':';}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 283 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 297 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 285 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 299 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Operator: %s\n", yytext );}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 287 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 301 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {printf( "Empty ID: %s\n", yytext );} 
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 289 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 303 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {return '\n';}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 291 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 305 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 295 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 309 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text = (char*)malloc((yyleng + 1) * sizeof(char));
@@ -1279,7 +1293,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 306 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 320 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text =(char*)malloc((yyleng + 1) * sizeof(char));
@@ -1293,7 +1307,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 317 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 331 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text =(char*)malloc((yyleng + 1) * sizeof(char));
@@ -1307,7 +1321,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 328 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 342 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     tmp = 0;
@@ -1325,7 +1339,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 343 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 357 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     tmp = 0;
@@ -1341,7 +1355,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 358 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 372 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text = (char*)malloc((yyleng + 1) * sizeof(char));   
@@ -1351,7 +1365,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 365 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 379 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';  
     text = (char*)malloc((yyleng + 1) * sizeof(char));
@@ -1361,7 +1375,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 372 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 386 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text = (char*)malloc((yyleng + 1) * sizeof(char));
@@ -1371,7 +1385,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 379 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 393 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text = (char*)malloc((yyleng + 1) * sizeof(char));
@@ -1381,7 +1395,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 386 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 400 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     text = '\0';
     text = (char*)malloc((yyleng + 1) * sizeof(char));
@@ -1391,64 +1405,64 @@ YY_RULE_SETUP
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 394 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 408 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\a");
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 395 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 409 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\b");
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 396 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 410 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\f");
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 397 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 411 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\n");
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 398 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 412 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\r");
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 399 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 413 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\t");
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 400 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 414 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\v");
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 401 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 415 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\\");
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 402 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 416 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\'");
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 403 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 417 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 safe_strcat(&text, "\"");
 	YY_BREAK
 case YY_STATE_EOF(RUNE):
 case YY_STATE_EOF(INTERPRETED_STRING_LITERALS):
-#line 404 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 418 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Error: there is no closed quotation mark");
 }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 409 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 423 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     safe_strcat(&text, yytext); 
 	printf("The one line comment: %s\n", text);
@@ -1458,16 +1472,16 @@ YY_RULE_SETUP
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 416 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 430 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {safe_strcat(&text,yytext);}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 417 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 431 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {safe_strcat(&text, "\\n");}
 	YY_BREAK
 case YY_STATE_EOF(MULTI_LINES_COMMENT):
-#line 418 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 432 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Error: no character ending a multiline comment ");
     BEGIN(INITIAL);
@@ -1475,9 +1489,9 @@ case YY_STATE_EOF(MULTI_LINES_COMMENT):
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 422 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 436 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
-    safe_strcat(&text, "\*\/");
+    safe_strcat(&text, "*/");
     printf("The multi-line comment: %s\n",text);
     free(text);
     BEGIN(INITIAL);
@@ -1485,14 +1499,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 429 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 443 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     safe_strcat(&text,yytext);
 }
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 433 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 447 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     safe_strcat(&text, "\'");
     printf("The rune literal: %s\n",text);
@@ -1503,12 +1517,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 441 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 455 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {safe_strcat(&text, yytext);}
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 442 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 456 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     safe_strcat(&text, "\"");
     printf("The interpreted string literals: %s\n", text);
@@ -1520,21 +1534,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 452 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 466 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {safe_strcat(&text,yytext);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 453 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 467 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
-    safe_strcat(&text, "\`");
+    safe_strcat(&text, "`");
     printf("The raw string literals: %s\n", text);
     free(text);
     BEGIN(INITIAL);
 }
 	YY_BREAK
 case YY_STATE_EOF(RAW_STRING_LITERALS):
-#line 459 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 473 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 {
     printf("Error: there is no character closing the line");
     BEGIN(INITIAL);
@@ -1542,10 +1556,10 @@ case YY_STATE_EOF(RAW_STRING_LITERALS):
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 465 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 479 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
 ECHO;
 	YY_BREAK
-#line 1549 "lex.yy.c"
+#line 1563 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -2406,4 +2420,27 @@ int main()
 	return 0;
 	}
 #endif
-#line 465 "C:\\Users\\astre\\Desktop\\bison_flex\\f\\lexer.l"
+#line 479 "C:\\Users\\astre\\Desktop\\final_repos\\flex\\lexer.l"
+
+
+int main(int argc, char* argv[]) {
+
+    int i;
+    for( i = 0; i < argc; i++){
+        printf("Argument %d: %s\n", i, argv[i]);
+    }
+
+    yyin = fopen(argv[1], "r");
+    printf("open\n");
+    FILE* tree = fopen("tree.dot", "w");
+    printf("create\n");
+
+    yyparse();
+    printf("parsed\n");
+
+    print_program_tree(root, tree);
+    printf("created tree file\n");
+
+    return 0;
+}
+

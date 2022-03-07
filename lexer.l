@@ -4,6 +4,10 @@
 #include <conio.h>
 #include <string.h>
 #include "parser.tab.h"
+struct program_struct* root;
+#include "create_tree.cpp"
+#include "tree_nodes.h"
+
 
 extern int yyparse(void);
 extern int yylex(void);
@@ -473,4 +477,25 @@ _ {printf( "Empty ID: %s\n", yytext );}
 
 
 %%
+
+int main(int argc, char* argv[]) {
+
+    int i;
+    for( i = 0; i < argc; i++){
+        printf("Argument %d: %s\n", i, argv[i]);
+    }
+
+    yyin = fopen(argv[1], "r");
+    printf("open\n");
+    FILE* tree = fopen("tree.dot", "w");
+    printf("create\n");
+
+    yyparse();
+    printf("parsed\n");
+
+    print_program_tree(root, tree);
+    printf("created tree file\n");
+
+    return 0;
+}
 

@@ -28,7 +28,7 @@ void print_import_list(struct import_decl_list_struct* imports, void* parent, FI
 }
 
 void print_import(struct import_one_of_list_struct* import_decl, FILE* output_file) {
-	if (import_decl->import->alias != nullptr) {
+	if (import_decl->import->alias != NULL) {
 		// Print import with alias
 		fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
 		fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", import_decl->import, import_decl->import->import_path, import_decl->import->alias);
@@ -148,7 +148,7 @@ void print_all_decl_struct(struct decl_all_struct* decl, FILE* output_file) {
 	}
 
 	if (decl->values != 0) {
-		print_node(decl->values, output_file);
+		print_expr(decl->values, output_file);
 		print_edge(decl, decl->values, "value", output_file);
 	}
 }
@@ -209,7 +209,7 @@ void print_stmt(struct stmt_struct* stmt, FILE* output_file) {
 		break;
         
 	case expr_stmt_t:
-		print_node(stmt->node_field, output_file);
+		print_expr(stmt->node_field, output_file);
 		print_edge(stmt, stmt->node_field, "node_stmt", output_file);
 		break;
 
@@ -221,14 +221,14 @@ void print_stmt(struct stmt_struct* stmt, FILE* output_file) {
 	case inc_t:
 		fprintf(output_file, "IdInc%p [label=\"++\"]\n", stmt);
 		fprintf(output_file, "Id%p->IdInc%p\n", stmt, stmt);
-		print_node(stmt->node_field, output_file);
+		print_expr(stmt->node_field, output_file);
 		fprintf(output_file, "IdInc%p->Id%p\n", stmt, stmt->node_field);
 		break;
 
 	case dec_t:
 		fprintf(output_file, "IdInc%p [label=\"--\"]\n", stmt);
 		fprintf(output_file, "Id%p->IdInc%p\n", stmt, stmt);
-		print_node(stmt->node_field, output_file);
+		print_expr(stmt->node_field, output_file);
 		fprintf(output_file, "IdInc%p->Id%p\n", stmt, stmt->node_field);
 		break;
 
@@ -244,7 +244,7 @@ void print_stmt(struct stmt_struct* stmt, FILE* output_file) {
 	}
 }
 
-void print_node(struct node* node, FILE* output_file) {
+void print_expr(struct node* node, FILE* output_file) {
 	switch (node->type) {
 	case integer:
 		print_node("INT", node, output_file);
@@ -271,93 +271,93 @@ void print_node(struct node* node, FILE* output_file) {
 
 	case unary_minus:
 		print_node("Unary -", node, output_file);
-		print_node(node->left, output_file);
+		print_expr(node->left, output_file);
 		print_edge(node, node->left, "", output_file);
 		break;
 
 	case plus:
 		print_node("Plus +", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case minus:
 		print_node("Minus -", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case mul:
 		print_node("Multiplication *", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case divide:
 		print_node("Divide /", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case less:
 		print_node("Less <", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "left", output_file);
 		print_edge(node, node->right, "right", output_file);
 		break;
 
 	case greater:
 		print_node("Greater >", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case less_or_equal:
 		print_node("LessEql <=", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case greater_or_equal:
 		print_node("GreaterEql >=", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case equal:
 		print_node("Equal ==", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case not_equal:
 		print_node("Not equal !=", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 		print_edge(node, node->left, "", output_file);
 		print_edge(node, node->right, "", output_file);
 		break;
 
 	case call:
 		print_node("Func call", node, output_file);
-		print_node(node->left, output_file); /* ������ ����� ������� */
+		print_expr(node->left, output_file); 
 		print_edge(node, node->left, "func name", output_file);
 		if (node->args != 0) {
 			print_node("Args", node->args, output_file);
@@ -367,7 +367,7 @@ void print_node(struct node* node, FILE* output_file) {
 			int arg_index = 0;
 
 			while (current_arg != 0) {
-				print_node(current_arg, output_file);
+				print_expr(current_arg, output_file);
 				fprintf(output_file, "Id%p -> Id%p [label=\"%i\"]; \n", node->args, current_arg, arg_index);
 
 				current_arg = current_arg->next;
@@ -379,8 +379,8 @@ void print_node(struct node* node, FILE* output_file) {
 
 	case array_indexing:
 		print_node("[]", node, output_file);
-		print_node(node->left, output_file);
-		print_node(node->right, output_file);
+		print_expr(node->left, output_file);
+		print_expr(node->right, output_file);
 
 		print_edge(node, node->left, "array", output_file);
 		print_edge(node, node->right, "index", output_file);
@@ -429,7 +429,7 @@ void print_initial_if(struct if_stmt_block_struct* if_stmt_part, FILE* output_fi
 		print_edge(if_stmt_part, if_stmt_part->pre_condition_stmt, "PreCondStmt", output_file);
 	}
 
-	print_node(if_stmt_part->condition, output_file);
+	print_expr(if_stmt_part->condition, output_file);
 	print_edge(if_stmt_part, if_stmt_part->condition, "Cond", output_file);
 
 	print_body(if_stmt_part->if_body->body_field, output_file);
@@ -461,7 +461,7 @@ void print_for(struct for_stmt_struct* for_stmt, FILE* output_file) {
 	fprintf(output_file, "Id%p -> Id%p;\n", for_stmt, for_stmt->body->body_field);
 
 	if(for_stmt->type == for_with_block || for_stmt->type == for_with_condition) {
-		print_node(for_stmt->for_condition, output_file);
+		print_expr(for_stmt->for_condition, output_file);
 		fprintf(output_file, "Id%p -> Id%p [label=\"condition\"];\n", for_stmt, for_stmt->for_condition);
 	}
 
@@ -511,7 +511,7 @@ void print_array_type(struct array_type_struct* array_type, FILE* output_file) {
 	print_node("array type", array_type, output_file);
 	print_type(array_type->type, output_file);
 	print_edge(array_type, array_type->type, "element type", output_file);
-	print_node(array_type->length, output_file);
+	print_expr(array_type->length, output_file);
 	print_edge(array_type, array_type->length, "array length", output_file);
 }
 
@@ -535,7 +535,7 @@ void print_array_element(struct array_element_struct* element, FILE* output_file
 		fprintf(output_file, "Id%p -> IdKey%p [label=\"key\"]; \n", element, element);
 	}
 
-	print_node(element->node, output_file);
+	print_expr(element->node, output_file);
 	fprintf(output_file, "Id%p -> Id%p [label=\"value\"]; \n", element, element->node);
 }
 
@@ -581,7 +581,7 @@ void print_expr_list(struct node_list_struct* list, void* parent, FILE* output_f
 		struct node* current = list->first;
 
 		while (current != 0) {
-			print_node(current, output_file);
+			print_expr(current, output_file);
 			print_edge(parent, current, "", output_file);
 
 			current = current->next;
@@ -628,10 +628,10 @@ void print_assignment(struct assignment_stmt_struct* assignment, FILE* output_fi
 		// Print edge between assignment and assignment index
 		fprintf(output_file, "Id%p -> Id%i%p; \n", assignment, expr_index, assignment);
 
-		print_node(left_current, output_file);
+		print_expr(left_current, output_file);
 		fprintf(output_file, "Id%i%p -> Id%p [label=\"left\"];\n", expr_index, assignment, left_current);
 
-		print_node(right_current, output_file);
+		print_expr(right_current, output_file);
 		fprintf(output_file, "Id%i%p -> Id%p [label=\"right\"];\n", expr_index, assignment, right_current);
 
 		expr_index++;

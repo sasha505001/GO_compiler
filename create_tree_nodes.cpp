@@ -378,7 +378,6 @@ struct stmt_struct* create_decl_stmt_from_list(struct decl_all_list_struct* decl
     return stmt;
 }
 
-//TO DO не используется create_top_level_func
 struct highest_decl_struct* create_highest_decl_func(struct func_decl_struct* func_decl) {
     struct highest_decl_struct* result = (struct highest_decl_struct*)malloc(sizeof(struct highest_decl_struct));
     result->func_decl = func_decl;
@@ -446,14 +445,14 @@ struct import_list_struct* add_to_import_list(struct import_list_struct* list, s
 struct import_one_of_list_struct* create_import_decl(struct import_struct* import_spec) {
     struct import_one_of_list_struct* result = (struct import_one_of_list_struct*)malloc(sizeof(struct import_one_of_list_struct));
     result->import = import_spec;
-
+    result->import_list = NULL;
     return result;
 }
 
 struct import_one_of_list_struct* create_import_decl_one_of_list_list(struct import_list_struct* list) {
     struct import_one_of_list_struct* result = (struct import_one_of_list_struct*)malloc(sizeof(struct import_one_of_list_struct));
     result->import_list = list;
-
+    result->import = NULL;
     return result;
 }
 

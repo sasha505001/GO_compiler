@@ -1,6 +1,15 @@
 #include "create_tree.h"
 #include "string.h"
 
+// Удаление всех символов из строки совпадающих с данным
+void delete_sim_from_str(char str[], char sim) {
+    int i, j;
+    for (i = j = 0; str[i] != '\0'; i++)
+        if (str[i] != sim)
+            str[j++] = str[i];
+    str[j] = '\0';
+}
+
 void print_program_tree(struct program_struct* program, FILE* output_file) {
 	fprintf(output_file, "digraph G{\n");
 	fprintf(output_file, "Id%p [label=\"program\"]\n", program);
@@ -28,18 +37,40 @@ void print_import_list(struct import_decl_list_struct* imports, void* parent, FI
 }
 
 void print_import(struct import_one_of_list_struct* import_decl, FILE* output_file) {
-	if (import_decl->import->alias != NULL) {
-		// Print import with alias
-		fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
-		fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", import_decl->import, import_decl->import->import_path, import_decl->import->alias);
-		fprintf(output_file, "Id%p->Id%p;\n", import_decl, import_decl->import);
+	
+	struct import_struct* current = 0;
+	if(import_decl->import != 0){
+		current = import_decl->import;
 	}
-	else {
-		// Print import just with import path
-		fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
-		fprintf(output_file, "Id%p [label=\"%s\"]\n", import_decl->import, import_decl->import->import_path);
-		fprintf(output_file, "Id%p->Id%p [label=\"imported\\npackage\"];\n", import_decl, import_decl->import);
+	else{
+		if(import_decl->import_list != NULL)
+			current = import_decl->import_list->first;
+		
 	}
+	while(current != 0){
+		char* path_of_import;
+		strcpy(path_of_import, current->import_path);	
+		
+		delete_sim_from_str(path_of_import, '\"');
+		
+		if (current->alias != NULL) {
+			// Print import with alias
+			fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
+			fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", import_decl->import, path_of_import, import_decl->import->alias);
+			fprintf(output_file, "Id%p->Id%p;\n", import_decl, import_decl->import);
+		}
+		else {
+			// Print import just with import path
+			fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
+			fprintf(output_file, "Id%p [label=\"%s\"]\n", import_decl->import, path_of_import);
+			fprintf(output_file, "Id%p->Id%p [label=\"imported\\npackage\"];\n", import_decl, import_decl->import);
+		}
+		current = current->next;
+		FILE* ff = fopen("helper.txt", "a");
+   		fprintf(ff, "1some:%s", path_of_import);
+   		fclose(ff);
+	}
+	
 }
 
 void print_package(struct package_struct* package, void* parent, FILE* output_file) {

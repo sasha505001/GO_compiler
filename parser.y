@@ -164,18 +164,18 @@ import_decl_list: import_one_of_list { $$ = create_import_decl_list($1);}
 | import_decl_list import_one_of_list { $$ = add_to_import_decl_list($1, $2);}
 ;
 
-import_one_of_list: IMPORT_KEYWORD empty_or_many_line_break import_v { $$ = create_import_decl($3); }
-| IMPORT_KEYWORD empty_or_many_line_break '(' import_list ')' one_similicon_or_many_line_break { $$ = create_import_decl_one_of_list_list($4); }
+import_one_of_list: IMPORT_KEYWORD empty_or_many_line_break import_v one_similicon_or_many_line_break { $$ = create_import_decl($3); }
+| IMPORT_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break import_list empty_or_many_line_break ')' one_similicon_or_many_line_break { $$ = create_import_decl_one_of_list_list($5); }
 ;
 
 
 import_list: import_v { $$ = create_import_list($1); }
-| import_list import_v { $$ = add_to_import_list($1, $2);}
+| import_list one_similicon_or_many_line_break import_v { $$ = add_to_import_list($1, $3);}
 ;
 
-import_v: '.' empty_or_many_line_break STRING one_similicon_or_many_line_break { $$ = create_import($3); }
-| STRING one_similicon_or_many_line_break { $$ = create_import($1); }
-| ID STRING one_similicon_or_many_line_break { $$ = create_import_with_alias($1, $2); }
+import_v: '.' empty_or_many_line_break STRING { $$ = create_import($3); }
+| STRING { $$ = create_import($1); }
+| ID STRING { $$ = create_import_with_alias($1, $2); }
 ;
 
 package_v: PACKAGE_KEYWORD empty_or_many_line_break ID{ $$ = create_package_decl($3); }
@@ -257,8 +257,6 @@ var_decl: VAR_KEYWORD empty_or_many_line_break var_v { $$ = create_decl_stmt($3,
 | VAR_KEYWORD empty_or_many_line_break '(' empty_or_many_line_break var_list ')' { $$ = create_decl_stmt_from_list($5, var_t); }
 ;
 
-
-
 l_value: ID { $$ = create_id_node($1); }
 | '(' empty_or_many_line_break l_value')' { $$ = $3; }
 | expr '.' empty_or_many_line_break ID { $$ = create_id_use_in_package_node($1, $4); }
@@ -268,7 +266,6 @@ l_value: ID { $$ = create_id_node($1); }
 l_value_list_not_empty: l_value { $$ = create_node_list($1);}
 | l_value_list_not_empty ',' empty_or_many_line_break l_value { $$ = add_to_node_list($1, $4); }
 ;
-
 
 inc_dec_stmt: l_value INC{ $$ = create_inc_dec_stmt($1, inc_t); }
 | l_value DEC{ $$ = create_inc_dec_stmt($1, dec_t); }

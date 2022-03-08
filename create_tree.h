@@ -3,6 +3,7 @@
 #include "tree_nodes.h"
 #include <stdio.h>
 
+void delete_sim_from_str(char str[], char sim);
 void print_program_tree(struct program_struct* program, FILE* output_file);
 void print_program(struct program_struct* program, FILE* output_file);
 void print_import_list(struct import_decl_list_struct* imports, void* parent, FILE* output_file);

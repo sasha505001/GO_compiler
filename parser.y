@@ -353,7 +353,7 @@ param_decl: ID complex_data { $$ = create_param($2, create_id($1)); }
 ;
 
 param_list: param_decl { $$ = create_param_list($1); }
-| param_list one_similicon_or_many_line_break param_decl { $$ = add_to_param_list($1, $3); }
+| param_list ',' empty_or_many_line_break param_decl { $$ = add_to_param_list($1, $4); }
 ;
 
 params: '(' empty_or_many_line_break param_list ')' { $$ = $3; }

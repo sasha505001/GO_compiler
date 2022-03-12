@@ -1525,6 +1525,7 @@ YY_RULE_SETUP
 #line 456 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
 {
     safe_strcat(&text, "\"");
+    delete_char_from_str(text, '\"');
     printf("The interpreted string literals: %s\n", text);
     yylval.String = (char*)malloc(strlen(text) + 1); 
     strcpy(yylval.String, text);
@@ -1535,12 +1536,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 467 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
+#line 468 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
 {safe_strcat(&text,yytext);}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 468 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
+#line 469 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
 {
     safe_strcat(&text, "`");
     printf("The raw string literals: %s\n", text);
@@ -1549,7 +1550,7 @@ YY_RULE_SETUP
 }
 	YY_BREAK
 case YY_STATE_EOF(RAW_STRING_LITERALS):
-#line 474 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
+#line 475 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
 {
     printf("Error: there is no character closing the line");
     BEGIN(INITIAL);
@@ -1557,10 +1558,10 @@ case YY_STATE_EOF(RAW_STRING_LITERALS):
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 480 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
+#line 481 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
 ECHO;
 	YY_BREAK
-#line 1564 "lex.yy.c"
+#line 1565 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -2421,7 +2422,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 480 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
+#line 481 "C:\\Users\\astre\\Desktop\\final_repos\\lexer.l"
 
 
 int main(int argc, char* argv[]) {
@@ -2438,7 +2439,7 @@ int main(int argc, char* argv[]) {
 
     yyparse();
 
-    printf("\nparsed");
+    printf("parsed\n");
     print_program_tree(root, tree);
 
     printf("created tree file\n");

@@ -1,15 +1,6 @@
 #include "create_tree.h"
 #include "string.h"
 
-// Удаление всех символов из строки совпадающих с данным
-void delete_sim_from_str(char str[], char sim) {
-    int i, j;
-    for (i = j = 0; str[i] != '\0'; i++)
-        if (str[i] != sim)
-            str[j++] = str[i];
-    str[j] = '\0';
-}
-
 void print_program_tree(struct program_struct* program, FILE* output_file) {
 	fprintf(output_file, "digraph G{\n");
 	fprintf(output_file, "Id%p [label=\"program\"]\n", program);
@@ -37,7 +28,7 @@ void print_import_list(struct import_decl_list_struct* imports, void* parent, FI
 }
 
 void print_import(struct import_one_of_list_struct* import_decl, FILE* output_file) {
-	
+	fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
 	struct import_struct* current = 0;
 	if(import_decl->import != 0){
 		current = import_decl->import;
@@ -48,24 +39,16 @@ void print_import(struct import_one_of_list_struct* import_decl, FILE* output_fi
 		}
 	}
 	
-	while(current != 0){
-		
-		char* path_of_import;
-		strcpy(path_of_import, current->import_path);	
-		
-		delete_sim_from_str(path_of_import, '\"');
-		
+	while(current != 0){		
 		if (current->alias != NULL) {
-			// Print import with alias
-			fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
-			fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", import_decl->import, path_of_import, current->alias);
-			fprintf(output_file, "Id%p->Id%p;\n", import_decl, import_decl->import);
+			// Print import with alias	
+			fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", current, current->import_path, current->alias);
+			fprintf(output_file, "Id%p->Id%p;\n", import_decl, current);
 		}
 		else {
 			// Print import just with import path
-			fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
-			fprintf(output_file, "Id%p [label=\"%s\"]\n", import_decl->import, path_of_import);
-			fprintf(output_file, "Id%p->Id%p [label=\"imported\\npackage\"];\n", import_decl, import_decl->import);
+			fprintf(output_file, "Id%p [label=\"%s\"]\n", current, current->import_path);
+			fprintf(output_file, "Id%p->Id%p [label=\"imported\\npackage\"];\n", import_decl, current);
 		}
 		current = current->next;
 	}
@@ -85,29 +68,6 @@ void print_highest_decl_list(struct highest_decl_list_struct* decls, void* paren
 		current_decl = current_decl->next;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void print_highest_decl(struct highest_decl_struct* decl, void* parent, FILE* output_file) {
 	if (decl->func_decl != 0) {
@@ -407,6 +367,7 @@ void print_expr(struct node* node, FILE* output_file) {
 		print_edge(node, node->right, "", output_file);
 		break;
 
+
 	case call:
 		print_node("Func call", node, output_file);
 		print_expr(node->left, output_file); 
@@ -451,6 +412,29 @@ void print_expr(struct node* node, FILE* output_file) {
 	case qualified_identifier_t:
 		fprintf(output_file, "Id%p [label=\"%s.%s\"]; \n", node, node->left->string_value, node->right->string_value);
 
+	case qualified_call_method_t:
+	
+		print_node("call method from package", node, output_file);
+		print_expr(node->left, output_file); 
+		print_edge(node, node->left, "package name", output_file);
+		print_expr(node->right, output_file);
+		print_edge(node, node->right, "function name", output_file);
+		if (node->args != 0) {
+			print_node("Args", node->args, output_file);
+			print_edge(node, node->args, "args", output_file);
+			struct node* current_arg = node->args->first;
+
+			int arg_index = 0;
+
+			while (current_arg != 0) {
+				print_expr(current_arg, output_file);
+				fprintf(output_file, "Id%p -> Id%p [label=\"%i\"]; \n", node->args, current_arg, arg_index);
+
+				current_arg = current_arg->next;
+				arg_index++;
+			}
+		}
+		break;
 	default:
 		break;
 	}

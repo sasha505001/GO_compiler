@@ -455,6 +455,7 @@ _ {printf( "Empty ID: %s\n", yytext );}
 <INTERPRETED_STRING_LITERALS>[^\"\\\n]+ {safe_strcat(&text, yytext);}
 <INTERPRETED_STRING_LITERALS>\" {
     safe_strcat(&text, "\"");
+    delete_char_from_str(text, '\"');
     printf("The interpreted string literals: %s\n", text);
     yylval.String = (char*)malloc(strlen(text) + 1); 
     strcpy(yylval.String, text);
@@ -493,7 +494,7 @@ int main(int argc, char* argv[]) {
 
     yyparse();
 
-    printf("\nparsed");
+    printf("parsed\n");
     print_program_tree(root, tree);
 
     printf("created tree file\n");

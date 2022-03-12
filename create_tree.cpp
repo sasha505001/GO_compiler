@@ -43,11 +43,13 @@ void print_import(struct import_one_of_list_struct* import_decl, FILE* output_fi
 		current = import_decl->import;
 	}
 	else{
-		if(import_decl->import_list != NULL)
+		if(import_decl->import_list != NULL){
 			current = import_decl->import_list->first;
-		
+		}
 	}
+	
 	while(current != 0){
+		
 		char* path_of_import;
 		strcpy(path_of_import, current->import_path);	
 		
@@ -56,7 +58,7 @@ void print_import(struct import_one_of_list_struct* import_decl, FILE* output_fi
 		if (current->alias != NULL) {
 			// Print import with alias
 			fprintf(output_file, "Id%p [label=\"import_decl\"]\n", import_decl);
-			fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", import_decl->import, path_of_import, import_decl->import->alias);
+			fprintf(output_file, "Id%p [label=\"%s as %s\"];\n", import_decl->import, path_of_import, current->alias);
 			fprintf(output_file, "Id%p->Id%p;\n", import_decl, import_decl->import);
 		}
 		else {
@@ -66,11 +68,7 @@ void print_import(struct import_one_of_list_struct* import_decl, FILE* output_fi
 			fprintf(output_file, "Id%p->Id%p [label=\"imported\\npackage\"];\n", import_decl, import_decl->import);
 		}
 		current = current->next;
-		FILE* ff = fopen("helper.txt", "a");
-   		fprintf(ff, "1some:%s", path_of_import);
-   		fclose(ff);
 	}
-	
 }
 
 void print_package(struct package_struct* package, void* parent, FILE* output_file) {
@@ -87,6 +85,29 @@ void print_highest_decl_list(struct highest_decl_list_struct* decls, void* paren
 		current_decl = current_decl->next;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void print_highest_decl(struct highest_decl_struct* decl, void* parent, FILE* output_file) {
 	if (decl->func_decl != 0) {

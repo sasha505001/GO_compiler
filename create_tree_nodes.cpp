@@ -2,6 +2,8 @@
 #include "tree_nodes.h"
 #include "stdio.h"
 struct node* create_int_node(int value) {
+
+
     struct node* result = (struct node*)malloc(sizeof(struct node));
     result->type = integer;
     result->int_value = value;
@@ -413,7 +415,7 @@ struct import_struct* create_import_with_alias(char* alias, char* path) {
     struct import_struct* result = (struct import_struct*)malloc(sizeof(struct import_struct));
     result->alias = alias;
     result->import_path = path;
-
+    result->next = NULL;
     return result;
 }
 
@@ -421,7 +423,7 @@ struct import_struct* create_import(char* path) {
     struct import_struct* result = (struct import_struct*)malloc(sizeof(struct import_struct));
     result->import_path = path;
     result->alias = NULL;
-
+    result->next = NULL;
     return result;
 }
 
@@ -446,6 +448,7 @@ struct import_one_of_list_struct* create_import_decl(struct import_struct* impor
     struct import_one_of_list_struct* result = (struct import_one_of_list_struct*)malloc(sizeof(struct import_one_of_list_struct));
     result->import = import_spec;
     result->import_list = NULL;
+    result->next = 0;
     return result;
 }
 
@@ -453,6 +456,7 @@ struct import_one_of_list_struct* create_import_decl_one_of_list_list(struct imp
     struct import_one_of_list_struct* result = (struct import_one_of_list_struct*)malloc(sizeof(struct import_one_of_list_struct));
     result->import_list = list;
     result->import = NULL;
+    result->next = NULL;
     return result;
 }
 

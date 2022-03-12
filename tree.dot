@@ -1,32 +1,18 @@
 digraph G{
-Id0000028515419e90 [label="program"]
-Id00000285154113f0 [label="package "fmt""]
-Id0000028515419e90 -> Id00000285154113f0 [label="package"]; 
-Id00000285154115c0 [label="import_decl"]
-Id00000285154115a0 [label=""fmt""]
-Id00000285154115c0->Id00000285154115a0 [label="imported\npackage"];
-Id0000028515419e90->Id00000285154115c0;
-Id0000028515419e10 [label="highest_decls"]; 
-Id0000028515419e90 -> Id0000028515419e10 [label="decls"]; 
-Id0000028515419d70 [label="func_decl"]; 
-Id0000028515419cb0 [label="func"]; 
-IdFuncName0000028515419cb0 [label="main"]; 
-Id0000028515419cb0 -> IdFuncName0000028515419cb0 [label="name"]
-Id0000028515411990 [label="body"];
-Id00000285154117c0 [label="stmt"]; 
-Id00000285154117c0 -> Id0000028515411720 [label="node_stmt"]; 
-Id0000028515411990 -> Id00000285154117c0 [label=""]; 
-Id0000028515411900 [label="stmt"]; 
-Id0000028515411880 [label="body"];
-Id0000028515411820 [label="stmt"]; 
-IdBreak0000028515411820 [label="break"];
-Id0000028515411820 -> IdBreak0000028515411820;
-Id0000028515411880 -> Id0000028515411820 [label=""]; 
-Id0000028515411960 -> Id0000028515411880;
-Id0000028515411960 [label="for\n(infinite)"];
-Id0000028515411900 -> Id0000028515411960 [label="for"]; 
-Id0000028515411990 -> Id0000028515411900 [label=""]; 
-Id0000028515419d70 -> Id0000028515419cb0 [label="prototype"]; 
-Id0000028515419d70 -> Id0000028515411990 [label="body"]; 
-Id0000028515419e10 -> Id0000028515419d70 [label=""]; 
+Id000002472b329ea0 [label="program"]
+Id000002472b321400 [label="package main"]
+Id000002472b329ea0 -> Id000002472b321400 [label="package"]; 
+Id000002472b329d20 [label="highest_decls"]; 
+Id000002472b329ea0 -> Id000002472b329d20 [label="decls"]; 
+Id000002472b329e40 [label="func_decl"]; 
+Id000002472b329d80 [label="func"]; 
+IdFuncName000002472b329d80 [label="main"]; 
+Id000002472b329d80 -> IdFuncName000002472b329d80 [label="name"]
+Id000002472b3215c0 [label="body"];
+Id000002472b3217a0 [label="stmt"]; 
+Id000002472b3217a0 -> Id000002472b321700 [label="node_stmt"]; 
+Id000002472b3215c0 -> Id000002472b3217a0 [label=""]; 
+Id000002472b329e40 -> Id000002472b329d80 [label="prototype"]; 
+Id000002472b329e40 -> Id000002472b3215c0 [label="body"]; 
+Id000002472b329d20 -> Id000002472b329e40 [label=""]; 
 }

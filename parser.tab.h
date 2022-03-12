@@ -88,7 +88,7 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 12 "C:\\Users\\astre\\Desktop\\final_repos\\win_and_flex\\parser.y"
+#line 12 "C:\\Users\\astre\\Desktop\\final_repos\\parser.y"
 
     int Int_val;
     char* Id;

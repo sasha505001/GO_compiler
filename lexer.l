@@ -234,7 +234,7 @@ var {
 
 "||" {printf( "Operator: %s\n", yytext );}
 
-"<" {printf( "Operator: %s\n", yytext ); return '<';}
+"<" {printf( "Operator: %s\n", yytext ); return LESS;}
 
 "<=" {printf( "Operator: %s\n", yytext ); return LESS_OR_EQUAL;}
 
@@ -250,7 +250,7 @@ var {
 
 "^=" {printf( "Operator: %s\n", yytext );}
 
-">" {printf( "Operator: %s\n", yytext ); return '>';}
+">" {printf( "Operator: %s\n", yytext ); return GREATER;}
 
 ">=" {printf( "Operator: %s\n", yytext ); return GREATER_OR_EQUAL;}
 

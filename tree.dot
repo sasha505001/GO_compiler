@@ -1,0 +1,637 @@
+digraph G{
+Id00000238da71da40 [label="program"]
+Id00000238da711400 [label="package main"]
+Id00000238da71da40 -> Id00000238da711400 [label="package"]; 
+Id00000238da711600 [label="import_decl"]
+Id00000238da7115c0 [label="fmt"]
+Id00000238da711600->Id00000238da7115c0 [label="imported\npackage"];
+Id00000238da71da40->Id00000238da711600;
+Id00000238da711730 [label="import_decl"]
+Id00000238da711640 [label="math as m"];
+Id00000238da711730->Id00000238da711640;
+Id00000238da71da40->Id00000238da711730;
+Id00000238da71d640 [label="highest_decls"]; 
+Id00000238da71da40 -> Id00000238da71d640 [label="decls"]; 
+Id00000238da71d3e0 [label="func_decl"]; 
+Id00000238da71da80 [label="func"]; 
+IdFuncName00000238da71da80 [label="main"]; 
+Id00000238da71da80 -> IdFuncName00000238da71da80 [label="name"]
+Id00000238da71c5e0 [label="body"];
+Id00000238da71a2d0 [label="stmt"]; 
+Id00000238da711790 [label="var decl"]; 
+Id00000238da71a330 [label="decl"]; 
+Id00000238da711810 [label="a"]; 
+Id00000238da71a330 -> Id00000238da711810 [label="identifier"]; 
+Id00000238da71a280 [label="Less <"]; 
+Id00000238da71a1e0 [label="b"]; 
+Id00000238da71a230 [label="INT"]; 
+IdValue00000238da71a230 [label="0"]
+Id00000238da71a230->IdValue00000238da71a230
+Id00000238da71a280 -> Id00000238da71a1e0 [label="left"]; 
+Id00000238da71a280 -> Id00000238da71a230 [label="right"]; 
+Id00000238da71a330 -> Id00000238da71a280 [label="value"]; 
+Id00000238da711790 -> Id00000238da71a330 [label=""]; 
+Id00000238da71a2d0 -> Id00000238da711790 [label="short_var"]; 
+Id00000238da71c5e0 -> Id00000238da71a2d0 [label=""]; 
+Id00000238da71a360 [label="stmt"]; 
+Id00000238da71a360 [label="empty_stmt"]; 
+Id00000238da71c5e0 -> Id00000238da71a360 [label=""]; 
+Id00000238da71a3c0 [label="stmt"]; 
+Id00000238da71a3c0 [label="empty_stmt"]; 
+Id00000238da71c5e0 -> Id00000238da71a3c0 [label=""]; 
+Id00000238da71a420 [label="stmt"]; 
+Id00000238da71a420 [label="empty_stmt"]; 
+Id00000238da71c5e0 -> Id00000238da71a420 [label=""]; 
+Id00000238da71b370 [label="stmt"]; 
+Id00000238da7117b0 [label="IfStmt"]; 
+Id00000238da71a770 [label="Begin_if"]; 
+Id00000238da71a520 [label="Greater >"]; 
+Id00000238da71a480 [label="b"]; 
+Id00000238da71a4d0 [label="INT"]; 
+IdValue00000238da71a4d0 [label="0"]
+Id00000238da71a4d0->IdValue00000238da71a4d0
+Id00000238da71a520 -> Id00000238da71a480 [label=""]; 
+Id00000238da71a520 -> Id00000238da71a4d0 [label=""]; 
+Id00000238da71a770 -> Id00000238da71a520 [label="Cond"]; 
+Id00000238da71a180 [label="body"];
+Id00000238da71a6b0 [label="stmt"]; 
+Id00000238da71a610 [label="call method from package"]; 
+Id00000238da71a570 [label="fmt"]; 
+Id00000238da71a610 -> Id00000238da71a570 [label="package name"]; 
+Id00000238da71a660 [label="Println"]; 
+Id00000238da71a610 -> Id00000238da71a660 [label="function name"]; 
+Id00000238da7118d0 [label="Args"]; 
+Id00000238da71a610 -> Id00000238da7118d0 [label="args"]; 
+Id00000238da71a5c0 [label="STRING"]; 
+IdValue00000238da71a5c0 [label="b > 0"]
+Id00000238da71a5c0->IdValue00000238da71a5c0
+Id00000238da7118d0 -> Id00000238da71a5c0 [label="0"]; 
+Id00000238da71a6b0 -> Id00000238da71a610 [label="node_stmt"]; 
+Id00000238da71a180 -> Id00000238da71a6b0 [label=""]; 
+Id00000238da71a770 -> Id00000238da71a180 [label="Body"]; 
+Id00000238da7117b0 -> Id00000238da71a770 [label=""]; 
+Id00000238da71b250 [label="Begin_if"]; 
+Id00000238da71a840 [label="Equal =="]; 
+Id00000238da71a7a0 [label="c"]; 
+Id00000238da71a7f0 [label="INT"]; 
+IdValue00000238da71a7f0 [label="1"]
+Id00000238da71a7f0->IdValue00000238da71a7f0
+Id00000238da71a840 -> Id00000238da71a7a0 [label=""]; 
+Id00000238da71a840 -> Id00000238da71a7f0 [label=""]; 
+Id00000238da71b250 -> Id00000238da71a840 [label="Cond"]; 
+Id00000238da71a1c0 [label="body"];
+Id00000238da71b190 [label="stmt"]; 
+Id00000238da71a930 [label="call method from package"]; 
+Id00000238da71a890 [label="fmt"]; 
+Id00000238da71a930 -> Id00000238da71a890 [label="package name"]; 
+Id00000238da71aed0 [label="Println"]; 
+Id00000238da71a930 -> Id00000238da71aed0 [label="function name"]; 
+Id00000238da711a30 [label="Args"]; 
+Id00000238da71a930 -> Id00000238da711a30 [label="args"]; 
+Id00000238da71a8e0 [label="STRING"]; 
+IdValue00000238da71a8e0 [label="c == 1"]
+Id00000238da71a8e0->IdValue00000238da71a8e0
+Id00000238da711a30 -> Id00000238da71a8e0 [label="0"]; 
+Id00000238da71b190 -> Id00000238da71a930 [label="node_stmt"]; 
+Id00000238da71a1c0 -> Id00000238da71b190 [label=""]; 
+Id00000238da71b250 -> Id00000238da71a1c0 [label="Body"]; 
+Id00000238da7117b0 -> Id00000238da71b250 [label="else-if"]; 
+Id00000238da71b340 [label="Begin_if"]; 
+Id00000238da71aa20 [label="Greater >"]; 
+Id00000238da71b100 [label="c"]; 
+Id00000238da71af70 [label="INT"]; 
+IdValue00000238da71af70 [label="2"]
+Id00000238da71af70->IdValue00000238da71af70
+Id00000238da71aa20 -> Id00000238da71b100 [label=""]; 
+Id00000238da71aa20 -> Id00000238da71af70 [label=""]; 
+Id00000238da71b340 -> Id00000238da71aa20 [label="Cond"]; 
+Id00000238da71a140 [label="body"];
+Id00000238da71b280 [label="stmt"]; 
+Id00000238da71acf0 [label="call method from package"]; 
+Id00000238da71a9d0 [label="fmt"]; 
+Id00000238da71acf0 -> Id00000238da71a9d0 [label="package name"]; 
+Id00000238da71ad40 [label="Println"]; 
+Id00000238da71acf0 -> Id00000238da71ad40 [label="function name"]; 
+Id00000238da711a50 [label="Args"]; 
+Id00000238da71acf0 -> Id00000238da711a50 [label="args"]; 
+Id00000238da71ab60 [label="c"]; 
+Id00000238da711a50 -> Id00000238da71ab60 [label="0"]; 
+Id00000238da71b280 -> Id00000238da71acf0 [label="node_stmt"]; 
+Id00000238da71a140 -> Id00000238da71b280 [label=""]; 
+Id00000238da71b340 -> Id00000238da71a140 [label="Body"]; 
+Id00000238da7117b0 -> Id00000238da71b340 [label="else-if"]; 
+Id00000238da71b370 -> Id00000238da7117b0 [label=""]; 
+Id00000238da71c5e0 -> Id00000238da71b370 [label=""]; 
+Id00000238da71b3d0 [label="stmt"]; 
+Id00000238da711970 [label="="]; 
+Id000000238da711970 [label="0"]; 
+Id00000238da711970 -> Id000000238da711970; 
+Id00000238da71ae80 [label="[]"]; 
+Id00000238da71aa70 [label="odds"]; 
+Id00000238da71afc0 [label="INT"]; 
+IdValue00000238da71afc0 [label="2"]
+Id00000238da71afc0->IdValue00000238da71afc0
+Id00000238da71ae80 -> Id00000238da71aa70 [label="array"]; 
+Id00000238da71ae80 -> Id00000238da71afc0 [label="index"]; 
+Id000000238da711970 -> Id00000238da71ae80 [label="left"];
+Id00000238da71ab10 [label="INT"]; 
+IdValue00000238da71ab10 [label="5"]
+Id00000238da71ab10->IdValue00000238da71ab10
+Id000000238da711970 -> Id00000238da71ab10 [label="right"];
+Id100000238da711970 [label="1"]; 
+Id00000238da711970 -> Id100000238da711970; 
+Id00000238da71b010 [label="[]"]; 
+Id00000238da71af20 [label="odds"]; 
+Id00000238da71aac0 [label="INT"]; 
+IdValue00000238da71aac0 [label="3"]
+Id00000238da71aac0->IdValue00000238da71aac0
+Id00000238da71b010 -> Id00000238da71af20 [label="array"]; 
+Id00000238da71b010 -> Id00000238da71aac0 [label="index"]; 
+Id100000238da711970 -> Id00000238da71b010 [label="left"];
+Id00000238da71abb0 [label="INT"]; 
+IdValue00000238da71abb0 [label="7"]
+Id00000238da71abb0->IdValue00000238da71abb0
+Id100000238da711970 -> Id00000238da71abb0 [label="right"];
+Id00000238da71b3d0 -> Id00000238da711970 [label=""]; 
+Id00000238da71c5e0 -> Id00000238da71b3d0 [label=""]; 
+Id00000238da71b430 [label="stmt"]; 
+Id00000238da711910 [label="="]; 
+Id000000238da711910 [label="0"]; 
+Id00000238da711910 -> Id000000238da711910; 
+Id00000238da71ac50 [label="[]"]; 
+Id00000238da71ac00 [label="booleans"]; 
+Id00000238da71ad90 [label="INT"]; 
+IdValue00000238da71ad90 [label="0"]
+Id00000238da71ad90->IdValue00000238da71ad90
+Id00000238da71ac50 -> Id00000238da71ac00 [label="array"]; 
+Id00000238da71ac50 -> Id00000238da71ad90 [label="index"]; 
+Id000000238da711910 -> Id00000238da71ac50 [label="left"];
+Id00000238da71b060 [label="BOOLEAN"]; 
+IdValue00000238da71b060 [label="true"]
+Id00000238da71b060->IdValue00000238da71b060
+Id000000238da711910 -> Id00000238da71b060 [label="right"];
+Id100000238da711910 [label="1"]; 
+Id00000238da711910 -> Id100000238da711910; 
+Id00000238da71ae30 [label="[]"]; 
+Id00000238da71ade0 [label="booleans"]; 
+Id00000238da71aca0 [label="INT"]; 
+IdValue00000238da71aca0 [label="1"]
+Id00000238da71aca0->IdValue00000238da71aca0
+Id00000238da71ae30 -> Id00000238da71ade0 [label="array"]; 
+Id00000238da71ae30 -> Id00000238da71aca0 [label="index"]; 
+Id100000238da711910 -> Id00000238da71ae30 [label="left"];
+Id00000238da71b0b0 [label="BOOLEAN"]; 
+IdValue00000238da71b0b0 [label="false"]
+Id00000238da71b0b0->IdValue00000238da71b0b0
+Id100000238da711910 -> Id00000238da71b0b0 [label="right"];
+Id00000238da71b430 -> Id00000238da711910 [label=""]; 
+Id00000238da71c5e0 -> Id00000238da71b430 [label=""]; 
+Id00000238da71c4a0 [label="stmt"]; 
+Id00000238da71ba80 [label="call method from package"]; 
+Id00000238da71c200 [label="fmt"]; 
+Id00000238da71ba80 -> Id00000238da71c200 [label="package name"]; 
+Id00000238da71bfd0 [label="Println"]; 
+Id00000238da71ba80 -> Id00000238da71bfd0 [label="function name"]; 
+Id00000238da711990 [label="Args"]; 
+Id00000238da71ba80 -> Id00000238da711990 [label="args"]; 
+Id00000238da71bcb0 [label="[]"]; 
+Id00000238da71b580 [label="odds"]; 
+Id00000238da71b5d0 [label="INT"]; 
+IdValue00000238da71b5d0 [label="2"]
+Id00000238da71b5d0->IdValue00000238da71b5d0
+Id00000238da71bcb0 -> Id00000238da71b580 [label="array"]; 
+Id00000238da71bcb0 -> Id00000238da71b5d0 [label="index"]; 
+Id00000238da711990 -> Id00000238da71bcb0 [label="0"]; 
+Id00000238da71b760 [label="[]"]; 
+Id00000238da71ba30 [label="odds"]; 
+Id00000238da71b620 [label="INT"]; 
+IdValue00000238da71b620 [label="3"]
+Id00000238da71b620->IdValue00000238da71b620
+Id00000238da71b760 -> Id00000238da71ba30 [label="array"]; 
+Id00000238da71b760 -> Id00000238da71b620 [label="index"]; 
+Id00000238da711990 -> Id00000238da71b760 [label="1"]; 
+Id00000238da71b8f0 [label="d"]; 
+Id00000238da711990 -> Id00000238da71b8f0 [label="2"]; 
+Id00000238da71c4a0 -> Id00000238da71ba80 [label="node_stmt"]; 
+Id00000238da71c5e0 -> Id00000238da71c4a0 [label=""]; 
+Id00000238da71c910 [label="stmt"]; 
+Id00000238da71b7b0 [label="call method from package"]; 
+Id00000238da71be40 [label="fmt"]; 
+Id00000238da71b7b0 -> Id00000238da71be40 [label="package name"]; 
+Id00000238da71bb70 [label="Println"]; 
+Id00000238da71b7b0 -> Id00000238da71bb70 [label="function name"]; 
+Id00000238da7119b0 [label="Args"]; 
+Id00000238da71b7b0 -> Id00000238da7119b0 [label="args"]; 
+Id00000238da71b670 [label="m.E"]; 
+Id00000238da71b670 [label="call method from package"]; 
+Id00000238da71c250 [label="m"]; 
+Id00000238da71b670 -> Id00000238da71c250 [label="package name"]; 
+Id00000238da71b850 [label="E"]; 
+Id00000238da71b670 -> Id00000238da71b850 [label="function name"]; 
+Id00000238da7119b0 -> Id00000238da71b670 [label="0"]; 
+Id00000238da71c910 -> Id00000238da71b7b0 [label="node_stmt"]; 
+Id00000238da71c5e0 -> Id00000238da71c910 [label=""]; 
+Id00000238da71c9a0 [label="stmt"]; 
+Id00000238da711a10 [label="var decl"]; 
+Id00000238da71c970 [label="decl"]; 
+Id00000238da711a70 [label="a"]; 
+Id00000238da71c970 -> Id00000238da711a70 [label="identifier"]; 
+Id00000238da7119d0 [label="int"]; 
+Id00000238da71c970 -> Id00000238da7119d0 [label="type"]; 
+Id00000238da711a10 -> Id00000238da71c970 [label=""]; 
+Id00000238da71c9a0 -> Id00000238da711a10 [label="var_decl"]; 
+Id00000238da71c5e0 -> Id00000238da71c9a0 [label=""]; 
+Id00000238da71ca00 [label="stmt"]; 
+Id00000238da711710 [label="var decl"]; 
+Id00000238da71ca60 [label="decl"]; 
+Id00000238da7116f0 [label="r"]; 
+Id00000238da71ca60 -> Id00000238da7116f0 [label="identifier"]; 
+Id00000238da71b800 [label="INT"]; 
+IdValue00000238da71b800 [label="0"]
+Id00000238da71b800->IdValue00000238da71b800
+Id00000238da71ca60 -> Id00000238da71b800 [label="value"]; 
+Id00000238da711710 -> Id00000238da71ca60 [label=""]; 
+Id00000238da71ca00 -> Id00000238da711710 [label="short_var"]; 
+Id00000238da71c5e0 -> Id00000238da71ca00 [label=""]; 
+Id00000238da71cea0 [label="stmt"]; 
+Id00000238da71c760 [label="body"];
+Id00000238da71cd20 [label="stmt"]; 
+Id00000238da71d7c0 [label="IfStmt"]; 
+Id00000238da71dae0 [label="Begin_if"]; 
+Id00000238da71bb20 [label="Greater >"]; 
+Id00000238da71b9e0 [label="a"]; 
+Id00000238da71c0c0 [label="INT"]; 
+IdValue00000238da71c0c0 [label="5"]
+Id00000238da71c0c0->IdValue00000238da71c0c0
+Id00000238da71bb20 -> Id00000238da71b9e0 [label=""]; 
+Id00000238da71bb20 -> Id00000238da71c0c0 [label=""]; 
+Id00000238da71dae0 -> Id00000238da71bb20 [label="Cond"]; 
+Id00000238da71c720 [label="body"];
+Id00000238da71cfc0 [label="stmt"]; 
+IdInc00000238da71cfc0 [label="--"]
+Id00000238da71cfc0->IdInc00000238da71cfc0
+Id00000238da71bda0 [label="a"]; 
+IdInc00000238da71cfc0->Id00000238da71bda0
+Id00000238da71c720 -> Id00000238da71cfc0 [label=""]; 
+Id00000238da71dae0 -> Id00000238da71c720 [label="Body"]; 
+Id00000238da71d7c0 -> Id00000238da71dae0 [label=""]; 
+Id00000238da71cd20 -> Id00000238da71d7c0 [label=""]; 
+Id00000238da71c760 -> Id00000238da71cd20 [label=""]; 
+Id00000238da71db10 -> Id00000238da71c760;
+Id00000238da71b4e0 [label="LessEql <="]; 
+Id00000238da71bd50 [label="a"]; 
+Id00000238da71bbc0 [label="INT"]; 
+IdValue00000238da71bbc0 [label="7"]
+Id00000238da71bbc0->IdValue00000238da71bbc0
+Id00000238da71b4e0 -> Id00000238da71bd50 [label=""]; 
+Id00000238da71b4e0 -> Id00000238da71bbc0 [label=""]; 
+Id00000238da71db10 -> Id00000238da71b4e0 [label="condition"];
+Id00000238da71d200 [label="stmt"]; 
+Id00000238da7117f0 [label="var decl"]; 
+Id00000238da71d2a0 [label="decl"]; 
+Id00000238da7117d0 [label="a"]; 
+Id00000238da71d2a0 -> Id00000238da7117d0 [label="identifier"]; 
+Id00000238da71b990 [label="INT"]; 
+IdValue00000238da71b990 [label="0"]
+Id00000238da71b990->IdValue00000238da71b990
+Id00000238da71d2a0 -> Id00000238da71b990 [label="value"]; 
+Id00000238da7117f0 -> Id00000238da71d2a0 [label=""]; 
+Id00000238da71d200 -> Id00000238da7117f0 [label="short_var"]; 
+Id00000238da71db10 -> Id00000238da71d200 [label="init stmt"];
+Id00000238da71cd80 [label="stmt"]; 
+IdInc00000238da71cd80 [label="++"]
+Id00000238da71cd80->IdInc00000238da71cd80
+Id00000238da71b530 [label="a"]; 
+IdInc00000238da71cd80->Id00000238da71b530
+Id00000238da71db10 -> Id00000238da71cd80 [label="post stmt"];
+Id00000238da71db10 [label="for\n(clause)"];
+Id00000238da71cea0 -> Id00000238da71db10 [label="for"]; 
+Id00000238da71c5e0 -> Id00000238da71cea0 [label=""]; 
+Id00000238da71cae0 [label="stmt"]; 
+Id00000238da71c860 [label="body"];
+Id00000238da71d1a0 [label="stmt"]; 
+Id00000238da71bee0 [label="call method from package"]; 
+Id00000238da71be90 [label="fmt"]; 
+Id00000238da71bee0 -> Id00000238da71be90 [label="package name"]; 
+Id00000238da71c070 [label="Println"]; 
+Id00000238da71bee0 -> Id00000238da71c070 [label="function name"]; 
+Id00000238da71d720 [label="Args"]; 
+Id00000238da71bee0 -> Id00000238da71d720 [label="args"]; 
+Id00000238da71b710 [label="a"]; 
+Id00000238da71d720 -> Id00000238da71b710 [label="0"]; 
+Id00000238da71d1a0 -> Id00000238da71bee0 [label="node_stmt"]; 
+Id00000238da71c860 -> Id00000238da71d1a0 [label=""]; 
+Id00000238da71cba0 [label="stmt"]; 
+IdInc00000238da71cba0 [label="--"]
+Id00000238da71cba0->IdInc00000238da71cba0
+Id00000238da71bf30 [label="a"]; 
+IdInc00000238da71cba0->Id00000238da71bf30
+Id00000238da71c860 -> Id00000238da71cba0 [label=""]; 
+Id00000238da71db40 -> Id00000238da71c860;
+Id00000238da71b940 [label="Greater >"]; 
+Id00000238da71bdf0 [label="a"]; 
+Id00000238da71b6c0 [label="INT"]; 
+IdValue00000238da71b6c0 [label="2"]
+Id00000238da71b6c0->IdValue00000238da71b6c0
+Id00000238da71b940 -> Id00000238da71bdf0 [label=""]; 
+Id00000238da71b940 -> Id00000238da71b6c0 [label=""]; 
+Id00000238da71db40 -> Id00000238da71b940 [label="condition"];
+Id00000238da71db40 [label="for\n(condition only)"];
+Id00000238da71cae0 -> Id00000238da71db40 [label="for"]; 
+Id00000238da71c5e0 -> Id00000238da71cae0 [label=""]; 
+Id00000238da71ccc0 [label="stmt"]; 
+Id00000238da71d6e0 [label="IfStmt"]; 
+Id00000238da71db70 [label="Begin_if"]; 
+Id00000238da71c2f0 [label="Equal =="]; 
+Id00000238da71bf80 [label="a"]; 
+Id00000238da71c3e0 [label="INT"]; 
+IdValue00000238da71c3e0 [label="0"]
+Id00000238da71c3e0->IdValue00000238da71c3e0
+Id00000238da71c2f0 -> Id00000238da71bf80 [label=""]; 
+Id00000238da71c2f0 -> Id00000238da71c3e0 [label=""]; 
+Id00000238da71db70 -> Id00000238da71c2f0 [label="Cond"]; 
+Id00000238da71c730 [label="body"];
+Id00000238da71d020 [label="stmt"]; 
+Id00000238da71c110 [label="call method from package"]; 
+Id00000238da71c020 [label="fmt"]; 
+Id00000238da71c110 -> Id00000238da71c020 [label="package name"]; 
+Id00000238da71bad0 [label="Println"]; 
+Id00000238da71c110 -> Id00000238da71bad0 [label="function name"]; 
+Id00000238da71d820 [label="Args"]; 
+Id00000238da71c110 -> Id00000238da71d820 [label="args"]; 
+Id00000238da71b8a0 [label="STRING"]; 
+IdValue00000238da71b8a0 [label="a == 0"]
+Id00000238da71b8a0->IdValue00000238da71b8a0
+Id00000238da71d820 -> Id00000238da71b8a0 [label="0"]; 
+Id00000238da71d020 -> Id00000238da71c110 [label="node_stmt"]; 
+Id00000238da71c730 -> Id00000238da71d020 [label=""]; 
+Id00000238da71db70 -> Id00000238da71c730 [label="Body"]; 
+Id00000238da71d6e0 -> Id00000238da71db70 [label=""]; 
+Id00000238da71c800 [label="body"];
+Id00000238da71ce40 [label="stmt"]; 
+Id00000238da71bc10 [label="call method from package"]; 
+Id00000238da71c160 [label="fmt"]; 
+Id00000238da71bc10 -> Id00000238da71c160 [label="package name"]; 
+Id00000238da71bc60 [label="Println"]; 
+Id00000238da71bc10 -> Id00000238da71bc60 [label="function name"]; 
+Id00000238da71d5c0 [label="Args"]; 
+Id00000238da71bc10 -> Id00000238da71d5c0 [label="args"]; 
+Id00000238da71c1b0 [label="a"]; 
+Id00000238da71d5c0 -> Id00000238da71c1b0 [label="0"]; 
+Id00000238da71ce40 -> Id00000238da71bc10 [label="node_stmt"]; 
+Id00000238da71c800 -> Id00000238da71ce40 [label=""]; 
+Id00000238da71d6e0 -> Id00000238da71c800 [label="else"]; 
+Id00000238da71ccc0 -> Id00000238da71d6e0 [label=""]; 
+Id00000238da71c5e0 -> Id00000238da71ccc0 [label=""]; 
+Id00000238da71d0e0 [label="stmt"]; 
+Id00000238da71c740 [label="return"]; 
+Id00000238da71d0e0 -> Id00000238da71c740 [label="return"]; 
+Id00000238da71c5e0 -> Id00000238da71d0e0 [label=""]; 
+Id00000238da71d3e0 -> Id00000238da71da80 [label="prototype"]; 
+Id00000238da71d3e0 -> Id00000238da71c5e0 [label="body"]; 
+Id00000238da71d640 -> Id00000238da71d3e0 [label=""]; 
+Id00000238da71d920 [label="func_decl"]; 
+Id00000238da71d8e0 [label="func"]; 
+IdFuncName00000238da71d8e0 [label="myFunction"]; 
+Id00000238da71d8e0 -> IdFuncName00000238da71d8e0 [label="name"]
+Id00000238da71d4a0 [label="params"]; 
+Id00000238da71d800 [label="param"]; 
+Id00000238da71da20 [label="a"]; 
+Id00000238da71d480 [label="composite type"]; 
+Id00000238da71d7e0 [label="array type"]; 
+Id00000238da71d460 [label="int"]; 
+Id00000238da71d7e0 -> Id00000238da71d460 [label="element type"]; 
+Id00000238da71bd00 [label="INT"]; 
+IdValue00000238da71bd00 [label="2"]
+Id00000238da71bd00->IdValue00000238da71bd00
+Id00000238da71d7e0 -> Id00000238da71bd00 [label="array length"]; 
+Id00000238da71d480 -> Id00000238da71d7e0 [label=""]; 
+Id00000238da71d800 -> Id00000238da71da20 [label="id"]; 
+Id00000238da71d800 -> Id00000238da71d480 [label="type"]; 
+Id00000238da71d4a0 -> Id00000238da71d800 [label=""]; 
+Id00000238da71d8e0 -> Id00000238da71d4a0 [label=""]; 
+Id00000238da71d9a0 [label="int"]; 
+Id00000238da71d8e0 -> Id00000238da71d9a0 [label="return"]; 
+Id00000238da71c8f0 [label="body"];
+Id00000238da71cf00 [label="stmt"]; 
+Id00000238da71c390 [label="call method from package"]; 
+Id00000238da71c2a0 [label="fmt"]; 
+Id00000238da71c390 -> Id00000238da71c2a0 [label="package name"]; 
+Id00000238da71c430 [label="Println"]; 
+Id00000238da71c390 -> Id00000238da71c430 [label="function name"]; 
+Id00000238da71d860 [label="Args"]; 
+Id00000238da71c390 -> Id00000238da71d860 [label="args"]; 
+Id00000238da71c340 [label="a"]; 
+Id00000238da71d860 -> Id00000238da71c340 [label="0"]; 
+Id00000238da71cf00 -> Id00000238da71c390 [label="node_stmt"]; 
+Id00000238da71c8f0 -> Id00000238da71cf00 [label=""]; 
+Id00000238da71cf60 [label="stmt"]; 
+Id00000238da71d560 [label="="]; 
+Id000000238da71d560 [label="0"]; 
+Id00000238da71d560 -> Id000000238da71d560; 
+Id00000238da71dc90 [label="[]"]; 
+Id00000238da71dd80 [label="a"]; 
+Id00000238da71e000 [label="INT"]; 
+IdValue00000238da71e000 [label="1"]
+Id00000238da71e000->IdValue00000238da71e000
+Id00000238da71dc90 -> Id00000238da71dd80 [label="array"]; 
+Id00000238da71dc90 -> Id00000238da71e000 [label="index"]; 
+Id000000238da71d560 -> Id00000238da71dc90 [label="left"];
+Id00000238da71e6e0 [label="INT"]; 
+IdValue00000238da71e6e0 [label="0"]
+Id00000238da71e6e0->IdValue00000238da71e6e0
+Id000000238da71d560 -> Id00000238da71e6e0 [label="right"];
+Id00000238da71cf60 -> Id00000238da71d560 [label=""]; 
+Id00000238da71c8f0 -> Id00000238da71cf60 [label=""]; 
+Id00000238da5203d0 [label="stmt"]; 
+Id00000238da71d6c0 [label="="]; 
+Id000000238da71d6c0 [label="0"]; 
+Id00000238da71d6c0 -> Id000000238da71d6c0; 
+Id00000238da71e320 [label="[]"]; 
+Id00000238da71dce0 [label="Func call"]; 
+Id00000238da71e870 [label="foobar"]; 
+Id00000238da71dce0 -> Id00000238da71e870 [label="func name"]; 
+Id00000238da71de70 [label="Multiplication *"]; 
+Id00000238da71e3c0 [label="INT"]; 
+IdValue00000238da71e3c0 [label="3"]
+Id00000238da71e3c0->IdValue00000238da71e3c0
+Id00000238da71dd30 [label="[]"]; 
+Id00000238da71e410 [label="a"]; 
+Id00000238da71e5f0 [label="INT"]; 
+IdValue00000238da71e5f0 [label="0"]
+Id00000238da71e5f0->IdValue00000238da71e5f0
+Id00000238da71dd30 -> Id00000238da71e410 [label="array"]; 
+Id00000238da71dd30 -> Id00000238da71e5f0 [label="index"]; 
+Id00000238da71de70 -> Id00000238da71e3c0 [label=""]; 
+Id00000238da71de70 -> Id00000238da71dd30 [label=""]; 
+Id00000238da71e320 -> Id00000238da71dce0 [label="array"]; 
+Id00000238da71e320 -> Id00000238da71de70 [label="index"]; 
+Id000000238da71d6c0 -> Id00000238da71e320 [label="left"];
+Id00000238da71e460 [label="Plus +"]; 
+Id00000238da71e050 [label="Plus +"]; 
+Id00000238da71dec0 [label="Plus +"]; 
+Id00000238da71e370 [label="Plus +"]; 
+Id00000238da71dfb0 [label="Multiplication *"]; 
+Id00000238da71e190 [label="INT"]; 
+IdValue00000238da71e190 [label="3"]
+Id00000238da71e190->IdValue00000238da71e190
+Id00000238da71e910 [label="INT"]; 
+IdValue00000238da71e910 [label="-2"]
+Id00000238da71e910->IdValue00000238da71e910
+Id00000238da71dfb0 -> Id00000238da71e190 [label=""]; 
+Id00000238da71dfb0 -> Id00000238da71e910 [label=""]; 
+Id00000238da71df60 [label="Divide /"]; 
+Id00000238da71eaf0 [label="Multiplication *"]; 
+Id00000238da71e820 [label="Divide /"]; 
+Id00000238da71e280 [label="INT"]; 
+IdValue00000238da71e280 [label="4"]
+Id00000238da71e280->IdValue00000238da71e280
+Id00000238da71ddd0 [label="INT"]; 
+IdValue00000238da71ddd0 [label="5"]
+Id00000238da71ddd0->IdValue00000238da71ddd0
+Id00000238da71e820 -> Id00000238da71e280 [label=""]; 
+Id00000238da71e820 -> Id00000238da71ddd0 [label=""]; 
+Id00000238da71e1e0 [label="INT"]; 
+IdValue00000238da71e1e0 [label="6"]
+Id00000238da71e1e0->IdValue00000238da71e1e0
+Id00000238da71eaf0 -> Id00000238da71e820 [label=""]; 
+Id00000238da71eaf0 -> Id00000238da71e1e0 [label=""]; 
+Id00000238da71de20 [label="INT"]; 
+IdValue00000238da71de20 [label="2"]
+Id00000238da71de20->IdValue00000238da71de20
+Id00000238da71df60 -> Id00000238da71eaf0 [label=""]; 
+Id00000238da71df60 -> Id00000238da71de20 [label=""]; 
+Id00000238da71e370 -> Id00000238da71dfb0 [label=""]; 
+Id00000238da71e370 -> Id00000238da71df60 [label=""]; 
+Id00000238da71e2d0 [label="INT"]; 
+IdValue00000238da71e2d0 [label="1"]
+Id00000238da71e2d0->IdValue00000238da71e2d0
+Id00000238da71dec0 -> Id00000238da71e370 [label=""]; 
+Id00000238da71dec0 -> Id00000238da71e2d0 [label=""]; 
+Id00000238da71ea50 [label="Func call"]; 
+Id00000238da71df10 [label="bar"]; 
+Id00000238da71ea50 -> Id00000238da71df10 [label="func name"]; 
+Id00000238da71e050 -> Id00000238da71dec0 [label=""]; 
+Id00000238da71e050 -> Id00000238da71ea50 [label=""]; 
+Id00000238da71e780 [label="Func call"]; 
+Id00000238da71e640 [label="foo"]; 
+Id00000238da71e780 -> Id00000238da71e640 [label="func name"]; 
+Id00000238da71d6a0 [label="Args"]; 
+Id00000238da71e780 -> Id00000238da71d6a0 [label="args"]; 
+Id00000238da71eb40 [label="Plus +"]; 
+Id00000238da71e8c0 [label="Multiplication *"]; 
+Id00000238da71e730 [label="INT"]; 
+IdValue00000238da71e730 [label="2"]
+Id00000238da71e730->IdValue00000238da71e730
+Id00000238da71e4b0 [label="INT"]; 
+IdValue00000238da71e4b0 [label="3"]
+Id00000238da71e4b0->IdValue00000238da71e4b0
+Id00000238da71e8c0 -> Id00000238da71e730 [label=""]; 
+Id00000238da71e8c0 -> Id00000238da71e4b0 [label=""]; 
+Id00000238da71e140 [label="Func call"]; 
+Id00000238da71e5a0 [label="bar"]; 
+Id00000238da71e140 -> Id00000238da71e5a0 [label="func name"]; 
+Id00000238da71eb40 -> Id00000238da71e8c0 [label=""]; 
+Id00000238da71eb40 -> Id00000238da71e140 [label=""]; 
+Id00000238da71d6a0 -> Id00000238da71eb40 [label="0"]; 
+Id00000238da71e460 -> Id00000238da71e050 [label=""]; 
+Id00000238da71e460 -> Id00000238da71e780 [label=""]; 
+Id000000238da71d6c0 -> Id00000238da71e460 [label="right"];
+Id00000238da5203d0 -> Id00000238da71d6c0 [label=""]; 
+Id00000238da71c8f0 -> Id00000238da5203d0 [label=""]; 
+Id00000238da520850 [label="stmt"]; 
+Id00000238da71c8d0 [label="body"];
+Id00000238da520790 [label="stmt"]; 
+Id00000238da71e500 [label="call method from package"]; 
+Id00000238da71dc40 [label="fmt"]; 
+Id00000238da71e500 -> Id00000238da71dc40 [label="package name"]; 
+Id00000238da71e7d0 [label="Println"]; 
+Id00000238da71e500 -> Id00000238da71e7d0 [label="function name"]; 
+Id00000238da71d540 [label="Args"]; 
+Id00000238da71e500 -> Id00000238da71d540 [label="args"]; 
+Id00000238da71e690 [label="a"]; 
+Id00000238da71d540 -> Id00000238da71e690 [label="0"]; 
+Id00000238da520790 -> Id00000238da71e500 [label="node_stmt"]; 
+Id00000238da71c8d0 -> Id00000238da520790 [label=""]; 
+Id00000238da71ebb0 -> Id00000238da71c8d0;
+Id00000238da71ebb0 [label="for\n(infinite)"];
+Id00000238da520850 -> Id00000238da71ebb0 [label="for"]; 
+Id00000238da71c8f0 -> Id00000238da520850 [label=""]; 
+Id00000238da5207f0 [label="stmt"]; 
+Id00000238da71d400 [label="var decl"]; 
+Id00000238da71d740 [label="decls"]; 
+Id00000238da71ebe0 [label="decl"]; 
+Id00000238da71d900 [label="d"]; 
+Id00000238da71ebe0 -> Id00000238da71d900 [label="identifier"]; 
+Id00000238da71d5a0 [label="int"]; 
+Id00000238da71ebe0 -> Id00000238da71d5a0 [label="type"]; 
+Id00000238da71e550 [label="INT"]; 
+IdValue00000238da71e550 [label="0"]
+Id00000238da71e550->IdValue00000238da71e550
+Id00000238da71ebe0 -> Id00000238da71e550 [label="value"]; 
+Id00000238da71d740 -> Id00000238da71ebe0 [label=""]; 
+Id00000238da521290 [label="decl"]; 
+Id00000238da71d440 [label="e"]; 
+Id00000238da521290 -> Id00000238da71d440 [label="identifier"]; 
+Id00000238da71d700 [label="int"]; 
+Id00000238da521290 -> Id00000238da71d700 [label="type"]; 
+Id00000238da71e9b0 [label="INT"]; 
+IdValue00000238da71e9b0 [label="0"]
+Id00000238da71e9b0->IdValue00000238da71e9b0
+Id00000238da521290 -> Id00000238da71e9b0 [label="value"]; 
+Id00000238da71d740 -> Id00000238da521290 [label=""]; 
+Id00000238da71d400 -> Id00000238da71d740 [label=""]; 
+Id00000238da5207f0 -> Id00000238da71d400 [label="var_decl"]; 
+Id00000238da71c8f0 -> Id00000238da5207f0 [label=""]; 
+Id00000238da520910 [label="stmt"]; 
+Id00000238da71c830 [label="body"];
+Id00000238da5208b0 [label="stmt"]; 
+IdBreak00000238da5208b0 [label="break"];
+Id00000238da5208b0 -> IdBreak00000238da5208b0;
+Id00000238da71c830 -> Id00000238da5208b0 [label=""]; 
+Id00000238da521260 -> Id00000238da71c830;
+Id00000238da71e0f0 [label="Greater >"]; 
+Id00000238da71e960 [label="d"]; 
+Id00000238da71ea00 [label="INT"]; 
+IdValue00000238da71ea00 [label="0"]
+Id00000238da71ea00->IdValue00000238da71ea00
+Id00000238da71e0f0 -> Id00000238da71e960 [label=""]; 
+Id00000238da71e0f0 -> Id00000238da71ea00 [label=""]; 
+Id00000238da521260 -> Id00000238da71e0f0 [label="condition"];
+Id00000238da521260 [label="for\n(condition only)"];
+Id00000238da520910 -> Id00000238da521260 [label="for"]; 
+Id00000238da71c8f0 -> Id00000238da520910 [label=""]; 
+Id00000238da520eb0 [label="stmt"]; 
+Id00000238da71c840 [label="body"];
+Id00000238da520610 [label="stmt"]; 
+IdContinue00000238da520610 [label="continue"];
+Id00000238da520610 -> IdContinue00000238da520610;
+Id00000238da71c840 -> Id00000238da520610 [label=""]; 
+Id00000238da521380 -> Id00000238da71c840;
+Id00000238da71dbf0 [label="Greater >"]; 
+Id00000238da71e230 [label="e"]; 
+Id00000238da71eaa0 [label="INT"]; 
+IdValue00000238da71eaa0 [label="0"]
+Id00000238da71eaa0->IdValue00000238da71eaa0
+Id00000238da71dbf0 -> Id00000238da71e230 [label=""]; 
+Id00000238da71dbf0 -> Id00000238da71eaa0 [label=""]; 
+Id00000238da521380 -> Id00000238da71dbf0 [label="condition"];
+Id00000238da521380 [label="for\n(condition only)"];
+Id00000238da520eb0 -> Id00000238da521380 [label="for"]; 
+Id00000238da71c8f0 -> Id00000238da520eb0 [label=""]; 
+Id00000238da5201f0 [label="stmt"]; 
+Id00000238da71c610 [label="return"]; 
+Id00000238da521d10 [label="[]"]; 
+Id00000238da71e0a0 [label="a"]; 
+Id00000238da521900 [label="INT"]; 
+IdValue00000238da521900 [label="1"]
+Id00000238da521900->IdValue00000238da521900
+Id00000238da521d10 -> Id00000238da71e0a0 [label="array"]; 
+Id00000238da521d10 -> Id00000238da521900 [label="index"]; 
+Id00000238da71c610 -> Id00000238da521d10 [label=""]; 
+Id00000238da5201f0 -> Id00000238da71c610 [label="return"]; 
+Id00000238da71c8f0 -> Id00000238da5201f0 [label=""]; 
+Id00000238da71d920 -> Id00000238da71d8e0 [label="prototype"]; 
+Id00000238da71d920 -> Id00000238da71c8f0 [label="body"]; 
+Id00000238da71d640 -> Id00000238da71d920 [label=""]; 
+}

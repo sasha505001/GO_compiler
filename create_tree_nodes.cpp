@@ -52,6 +52,7 @@ struct array_element_struct* create_array_indexed_element(int key, struct node* 
 struct array_element_struct* create_array_element(struct node* expr) {
     struct array_element_struct* result = (struct array_element_struct*)malloc(sizeof(struct array_element_struct));
     result->node = expr;
+    result->index = 0;
 
     return result;
 }

@@ -1,0 +1,30 @@
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Print("ha")
+	i := 0
+
+	if i = 2; i < 3 {
+
+	}
+
+	for i < 10 {
+		i++
+	}
+
+	if 1 == 1 {
+
+	} else if 5 == 2 {
+
+	}
+	fmt.Print(myFunc(1))
+
+}
+
+func myFunc(abc int) (c int, d int) {
+	c = abc
+	d = abc
+	return
+}

@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a = "abc"
+	var (
+		d int = 0
+		e int = 0
+	)
+	fmt.Print(a, d, e, try_it()[2])
+}
+
+func try_it() [3]int { return [3]int{1, 2, 3}; }

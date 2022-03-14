@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	a = [1 + 2]int{1, 2, 3}
+
+	var d [1 + 2]int = [1 + 2]int{
+
+		1, 2, 3}
+
+	fmt.Print(
+
+		lol(1 + 1))
+
+	const (
+		e int = 2
+		f     = 3
+	)
+	fmt.Print(a, d)
+}
+
+func lol(abc int) (c int, d int) {
+	c = abc
+	d = abc
+	return
+}

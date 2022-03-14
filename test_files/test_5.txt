@@ -1,0 +1,97 @@
+package main
+
+import (
+	"math"
+
+	. "fmt"
+)
+
+func main() {
+
+	s := 2
+	if s < 3 {
+	}
+	const con = 1
+
+	var another_var = 2
+
+	(s)++
+
+	var newVar int
+	Print(newVar)
+
+	var (
+		ba int = 12
+
+		bc = 2
+	)
+	var (aa int = 1; ab int = 2)
+	for aa < 2 {
+		aa++
+		Print(aa, ab)
+	}
+
+	for aa = 1; aa < 2; aa += 1 {
+		aa++
+	}
+	aa += 1
+
+	Print(ba, bc)
+	Print(another_var)
+	const (
+		b int = 1
+	)
+
+	var d [1 + 2]int = [1 + 2]int{
+
+		1, 2, 3}
+
+	w :=
+
+		-2
+
+	w = 1 - 2
+
+	if w <= 2 {
+
+	} else {
+
+	}
+
+	w = d[1+1]
+
+	p := math.
+		Pi
+
+	Print(
+
+		lol(1+1, 2+2))
+
+	const (
+		e int = 2
+		f     = 3
+	)
+	Print(
+		w)
+	Print(d)
+	Print(p)
+}
+
+func lol(a int, b int) int {
+	return f(a, b)
+}
+
+func f(
+	a int, b int) int {
+	var (x int = 1; y int = 2
+	)
+	x +=
+		1
+	count := 1
+	for i := 0; i < count; i++ {
+		break
+	}
+
+	return x + y
+
+}

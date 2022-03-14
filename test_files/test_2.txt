@@ -1,0 +1,93 @@
+package main
+
+import (
+	"fmt"
+	m "math"
+)
+
+func main() {
+	var arr2 [2]int = [2]int{1, 2} 
+	myFunc(arr2)
+
+	var arr_1 [4]int = [4]int{2: 5, 3: 7}
+	var bools [2]bool
+
+	const (
+		b int    = 0
+		c int    = 1
+		d string = "Go(lang)"
+	)
+
+	if b > 0 {
+		fmt.Println("b > 0")
+	} else if c == 1 {
+		fmt.Println("c == 1")
+	} else if c > 2 {
+		fmt.Println(c)
+	}
+
+	arr_1[2], arr_1[3] = 5, 7
+	bools[0], bools[1] = true, false
+
+	fmt.Println(arr_1[2], arr_1[3], d)
+	fmt.Println(m.Pi)
+
+	var a int
+
+	for a := 0; a <= 7; a++ {
+		if a > 8 {
+			a--
+		}
+	}
+
+	for a > 2 {
+		fmt.Println(a)
+		a--
+	}
+
+	if a == 0 {
+		fmt.Println("a == 0")
+	} else {
+		fmt.Println(a)
+	}
+
+	return
+}
+
+func myFunc(a [2]int) int {
+	fmt.Println(a)
+	a[1] = 0
+
+	for {
+		fmt.Println(a)
+		break
+	}
+
+	var (
+		d int = 0
+		e int = 2
+	)
+
+	for d > 0 {
+		break
+	}
+
+	for e > 0 {
+		e--
+		continue
+	}
+
+	o := 3*-2 + 2/3*4/2 + 1 + fucn_1() + fucn_2(2*3+fucn_1())
+	fmt.Print(o)
+	return a[1]
+}
+
+func my_function() [10]int {
+	return [10]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+}
+
+func fucn_1() int {
+	return 1
+}
+
+func fucn_2(a int) int { return a * 2; }

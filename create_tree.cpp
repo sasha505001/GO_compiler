@@ -566,7 +566,7 @@ void print_array_elements(struct array_element_list_struct* elements, FILE* outp
 void print_array_element(struct array_element_struct* element, FILE* output_file) {
 	print_node("array el", element, output_file);
 	
-	if (element->index >= 0) {
+	if (element->index > 0) {
 		fprintf(output_file, "IdKey%p [label=\"%i\"]; \n", element, element->index);
 		fprintf(output_file, "Id%p -> IdKey%p [label=\"key\"]; \n", element, element);
 	}

@@ -77,7 +77,7 @@ func myFunc(a [2]int) int {
 		continue
 	}
 
-	o := 3*-2 + 2/3*4/2 + 1 + fucn_1() + fucn_2(2*3+fucn_1())
+	o := 3*(-2) + 2/3*4/2 + 1 + fucn_1() + fucn_2(2*3+fucn_1())
 	fmt.Print(o)
 	return a[1]
 }

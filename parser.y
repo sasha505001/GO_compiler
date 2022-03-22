@@ -263,7 +263,7 @@ var_decl: VAR_KEYWORD empty_or_many_line_break var_v one_similicon_or_many_line_
 ;
 
 l_value: ID { $$ = create_id_node($1); }
-| '(' empty_or_many_line_break l_value')' { $$ = $3; }
+| '(' empty_or_many_line_break expr')' { $$ = $3; }
 | expr '.' empty_or_many_line_break ID { $$ = create_id_use_in_package_node($1, $4); }
 | expr '[' empty_or_many_line_break expr ']' { $$ = create_oper_node(array_indexing, $1, $4); }
 

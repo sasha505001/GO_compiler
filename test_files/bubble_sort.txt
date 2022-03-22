@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+func main() {
+	a := [5]int{3, 2, 4, 5, 1}
+	BubbleSort(a)
+	fmt.Print(a)
+}
+
+func BubbleSort(ar [5]int) {
+	for i := 0; i < len(ar); i++ {
+		for j := i; j < len(ar); j++ {
+			if ar[i] > ar[j] {
+				swap(ar, i, j)
+			}
+		}
+	}
+}
+
+func swap(ar [5]int, i int, j int) {
+	tmp := ar[i]
+	ar[i] = ar[j]
+	ar[j] = tmp
+}
